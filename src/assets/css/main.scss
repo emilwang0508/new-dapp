@@ -1,0 +1,435 @@
+@import "mixins";
+
+@import "variables";
+
+@import "grid";
+
+@import "normalize";
+
+@charset "UTF-8";
+ html {font-size: 62.5%;font-family:"Microsoft YaHei UI",Helvetica, Arial,"\5FAE\8F6F\96C5\9ED1";}
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p,blockquote,table,th,td,menu{margin:0;padding:0;box-sizing:content-box;}
+table{border-collapse:collapse;border-spacing:0;}
+ul,ol,menu{list-style:none}
+fieldset,img{border:none}
+img,object,select,input,textarea,button{vertical-align:middle}
+input,textarea,select,address,caption,cite,code,dfn,em,i,b,strong,small,th,var,abbr{font-size:100%;font-style:normal}
+caption,th {text-align: left;}
+article,aside,footer,header,hgroup,nav,section,figure,figcaption {display: block;}
+code, kbd, pre, samp, tt { font-family: Consolas,"Courier New", Courier, monospace;}
+address, cite, dfn, em, var,i {font-style: normal;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content:"";content: none;}
+a { 
+    color:#06f; text-decoration:none;cursor: pointer;
+    &:link,&:visited, &:active{color: #06f;}
+    &:hover, &:focus {color:#f60; text-decoration:underline;outline:none;}
+}
+
+//清理浮动
+.cf{
+    zoom:1;
+    &:before,&:after {content:"";display:table;}
+    &:after {clear:both;}
+}
+
+
+// 链接动画
+@mixin dz($time:0.25s){
+    -webkit-transition: all $time ease-in-out;
+    transition: all $time ease-in-out;
+}
+// 文字描边
+@mixin ts($s1:1px,$s2:1px,$color:#fff){
+    text-shadow:
+    $s1 $s1 $s2 $color,
+    -$s1 $s1 $s2 $color,
+    $s1 (-$s1) $s2 $color,
+    -$s1 (-$s1) $s2 $color;
+}
+// 旋转
+@mixin xz($deg:360){
+    -webkit-transform:rotate($deg+deg);
+    transform:rotate($deg+deg);
+}
+// 旋转放大
+@mixin xzfd($deg:360,$s1:1.2){
+    -webkit-transform:rotate($deg+deg) scale($s1);
+    transform:rotate($deg+deg) scale($s1);
+}
+// 移动动画
+@mixin yd($s1:0,$s2:0){
+    -webkit-transform:translate($s1,$s2);
+    transform:translate($s1,$s2);
+} 
+// 禁止选中
+@mixin ns{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+// 一行文字标题超出显示省略号
+@mixin online($s1) {
+    overflow: hidden;
+    line-height: $s1;
+    height: $s1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+// 计算(基本不会采用)
+@mixin calc($property, $expression) { 
+    #{$property}: -webkit-calc(#{$expression}); 
+    #{$property}: calc(#{$expression}); 
+}
+// 一行文字垂直居中,并隐藏溢出
+@mixin hlh($s1) {
+    height: $s1;
+    line-height: $s1;
+    overflow: hidden;
+}
+// 列表中更多显示右键头的图片处理
+@mixin goto($s1:1.2rem){
+    background:url("../image/icon_goto.png") right center no-repeat;
+    background-size: auto $s1;
+}
+
+
+
+.logo{
+  width: 70%;
+  display: block;
+  max-width: 486px;
+  margin: 5.8rem auto 1rem;
+
+}
+.text-center{
+	text-align: center;
+}
+p.text-shadow{
+	text-shadow: 0px 0px 20px #69a2ea;
+    color: #c8dcf1;
+    font-size: 1.2rem;
+}
+.container{
+	width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+#app{
+  //background-image: url("/static/img/background.png");
+  min-height: 100vh;
+  height: 100%;
+  margin-top: -1px;
+  padding-top: 1px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000;
+}
+
+.sign-panel{
+  background-image: url("/static/img/background.png");
+  min-height: calc(100vh);
+  margin-top: -1px;
+  padding-top: 1px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // min-height: 650px;
+  .des{
+    text-align: center;
+    font-size: 1.7rem;
+  }
+}
+.form-panel{
+    border: 1px solid #7594cf;
+    width: calc(90% - 40px);
+    margin: 2rem auto;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 20px #7594cf;
+    position: relative;
+    >i{
+	    display: block;
+	    position: absolute;
+    }
+    >i:first-of-type{
+		transform:scaleX(-1);
+		left: -15px;
+    	top: -15px;
+    }
+    >i:nth-of-type(2){
+    	right: -15px;
+    	top: -15px;
+    }
+    >i:nth-of-type(3){
+    	transform:scale(-1);
+    	left: -15px;
+    	bottom: -15px;
+    }
+    label{
+      font-size: 1.4rem;
+    }
+    input{
+      border:1px solid #7594cf;
+      width: calc(100% - 20px);
+      height: 3rem;
+      background-color: transparent;
+      margin-bottom: 12px;
+      color: #ffffff;
+      padding: 0 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .submit{
+      background-image: url(/static/img/submit-btn.png);
+      position: absolute;
+      width: 14rem;
+      height: 4rem;
+      right: -16px;
+      bottom: -16px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+@font-face {
+  font-family: 'special';
+  src: url('/static/fonts/neuropol.eot');
+  src: url('/static/fonts/neuropol.eot?#iefix') format('embedded-opentype'),
+  url('/static/fonts/neuropol.woff') format('woff'),
+  url('/static/fonts/neuropol.ttf') format('truetype'),
+  url('/static/fonts/neuropol.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@keyframes rotating
+{
+  0%{
+    @include xz(0)
+  }
+  25%{
+    @include xz(90)
+  }
+  50%{
+    @include xz(180)
+  }
+  75%{
+    @include xz(270)
+  }
+  100%{
+    @include xz(360)
+  }
+/*  from {
+    @include xz(0)
+  }
+  to {
+    @include xz(360)
+  }*/
+}
+
+@-moz-keyframes rotating /* Firefox */
+{
+  0%{
+    @include xz(0)
+  }
+  25%{
+    @include xz(90)
+  }
+  50%{
+    @include xz(180)
+  }
+  75%{
+    @include xz(270)
+  }
+  100%{
+    @include xz(360)
+  }
+}
+
+@-webkit-keyframes rotating /* Safari 和 Chrome */
+{
+  0%{
+    @include xz(0)
+  }
+  25%{
+    @include xz(90)
+  }
+  50%{
+    @include xz(180)
+  }
+  75%{
+    @include xz(270)
+  }
+  100%{
+    @include xz(360)
+  }
+}
+
+@-o-keyframes rotating /* Opera */
+{
+  0%{
+    @include xz(0)
+  }
+  25%{
+    @include xz(90)
+  }
+  50%{
+    @include xz(180)
+  }
+  75%{
+    @include xz(270)
+  }
+  100%{
+    @include xz(360)
+  }
+}
+.fl{
+  float: left;
+}
+.text-right{
+  text-align: right;
+}
+.lottery{
+  max-width: 600px;
+  margin: 4vh auto;
+  .title{
+    font-size: 2rem;
+  }
+  >div{
+    position: relative;
+    img.border{
+      width: 100%;
+      position: absolute;
+      animation: rotating 10s infinite;
+    }
+    img.capsule{
+      width: 80%;
+      margin: 10%;
+    }
+  }
+  .des{
+    margin: 2rem 0;
+  }
+}
+p.special{
+ font-family: 'special';
+  margin: 1vh auto;
+}
+.index{
+  .banner{
+    background-image: url(/static/img/banner.png);
+    padding-top: 1px;
+    background-size: cover;
+    background-position: bottom;
+    min-height: 100vh;
+    margin-top: -3px;
+  }
+}
+.button-more{
+  display: block;
+  margin: 1.5vh auto;
+  width: 83px;
+}
+.invite{
+  min-height: 100vh;
+  background-image: url(/static/img/invite-bg.jpg);
+  background-size: cover;
+  .user-center{
+    margin-top: 30px;
+    img{
+      width: 20%;
+    }
+    >div{
+      width: 80%;
+    }
+    .name{
+      font-family: 'special';
+    }
+    .bonus{
+      font-size: 0.9rem;
+    }
+  }
+  .des{
+    img{
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  .img100{
+    width: 100%;
+    object-fit: cover;
+  }
+  .code-panel{
+    margin: 3vh auto;
+    max-width: 600px;
+    >p{
+      font-family: 'special';
+      margin-bottom: 5px;
+    }
+    .tips{
+      font-family: "Microsoft YaHei UI";
+      font-size: 0.9rem;
+      color: #949494;
+    }
+    >div{
+
+      position: relative;
+      height: 50px;
+      width: 100%;
+      border: 1px solid transparent;
+      border-image-source: url(/static/img/code-panel-border.png);
+      border-image-slice: 0 fill;
+      border-image-width: 0px;
+      line-height: 50px;
+      text-indent: 8%;
+      font-size: 1.0rem;
+      margin-bottom: 15px;
+      p{
+        width: 70%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 50px;
+      }
+      .copy{
+        position: absolute;
+        right: 8%;
+        top: 0;
+      }
+    }
+  }
+}
+
+.rule{
+  min-height: 100vh;
+  background-image: url("/static/img/second.png");
+  background-size: cover;
+  position: relative;
+  margin-top: -2px;
+  .star{
+    width: 150px;
+    position: absolute;
+    top: -45px;
+  }
+  .title{
+    font-size: 3rem;
+    margin-top: 12vh;
+  }
+  .panel{
+    margin-top: 5vh;
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .ship{
+    width: 222px;
+    position: absolute;
+    right: 0;
+    bottom: -85px;
+  }
+}
+

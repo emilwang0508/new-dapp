@@ -1,7 +1,12 @@
 <template>
-  <div class="sign-panel">
+  <div class="sign-panel ">
+    <div class="container">
+        <img src="/static/img/logo.png" alt="logo" class="logo">
     <p class="des">AAA Space Domination MMO on Ethereum Blockchain</p>
     <div class="form-panel">
+      <i><img src="/static/img/form-corner.png" alt=""></i>
+      <i><img src="/static/img/form-corner.png" alt=""></i>
+      <i><img src="/static/img/form-corner.png" alt=""></i>
       <div class="input-group">
         <label for="email" >Email</label>
         <input type="text" v-model="email">
@@ -21,10 +26,14 @@
       <div class="h50"></div>
       <button class="submit">Submit</button>
     </div>
+    <p class="text-center text-shadow">I already have an account, please <a href="/#/sign-in">login</a></p>
+    <div class="h50"></div>
   </div>
+    </div>
 </template>
 
 <script>
+import '../assets/css/main.scss'
 
 export default {
   name: 'SignUp',
@@ -41,7 +50,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
   @font-face {
     font-family: 'special';
     src: url('/static/font/neuropol.eot');
@@ -52,9 +61,9 @@ export default {
     font-weight: normal;
     font-style: normal;
   }
-.sign-panel{
+/* .sign-panel{
   background-image: url("/static/img/background.png");
-  height: 100vh;
+  height: calc(100vh + 6.8rem);
   margin-top: -1px;
   padding-top: 1px;
   .des{
@@ -98,5 +107,5 @@ export default {
       border: none;
       font-family: 'special';
     }
-  }
+  } */
 </style>
