@@ -1,8 +1,8 @@
 <template>
   <div class="sign-panel">
     <div class="container">
-      <img src="/static/img/logo.png" alt="logo" class="logo">
-      <p class="des">AAA Space Domination MMO on Ethereum Blockchain</p>
+      <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
+      <p class="des text-shadow">AAA Space Domination MMO on Ethereum Blockchain</p>
       <div class="form-panel">
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
@@ -14,6 +14,8 @@
         <div class="h50"></div>
         <button class="submit">Submit</button>
       </div>
+      <p class="text-center text-shadow">if you don't have an account, please <a href="/#/sign-up">register</a></p>
+
     </div>
   </div>
 </template>

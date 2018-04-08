@@ -1,6 +1,6 @@
 <template>
   <div class="rule">
-    <img :src=imgSrc alt="star" class="star">
+      <img :src=imgSrc alt="star" class="star">
     <div class="container">
     <p class="text-right text-shadow special title">Supply <br/> Rules for  <br/>the War Effort</p>
     <div class="panel">
