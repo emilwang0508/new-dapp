@@ -1,11 +1,12 @@
 <template>
   <div class="rule">
       <img :src=imgSrc alt="star" class="star">
-    <div class="container">
-    <p class="text-right text-shadow special title">Supply <br/> Rules for  <br/>the War Effort</p>
+
+    <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>
     <div class="panel">
         <img src="/static/img/second-des.png" alt="des">
-    </div>
+        <button>invite friends</button>
+
     </div>
     <img :src=imgShip alt="spaceship" class="ship">
   </div>

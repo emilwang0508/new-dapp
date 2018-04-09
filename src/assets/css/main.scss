@@ -166,6 +166,12 @@ p.text-shadow{
     	left: -15px;
     	bottom: -15px;
     }
+  .input-group{
+    margin-bottom: 1rem;
+    .error{
+      color: #f96969;
+    }
+  }
     label{
       font-size: 1.4rem;
     }
@@ -295,6 +301,9 @@ p.text-shadow{
 .fl{
   float: left;
 }
+.fr{
+  float: right;
+}
 .text-right{
   text-align: right;
 }
@@ -339,6 +348,7 @@ p.special{
   margin: 1.5vh auto;
   width: 83px;
 }
+
 .invite{
   min-height: 100vh;
   background-image: url(/static/img/invite-bg.jpg);
@@ -409,11 +419,13 @@ p.special{
 }
 
 .rule{
-  min-height: 100vh;
-  background-image: url("/static/img/second.png");
+  height: 100vh;
+  background-image: url(/static/img/second.png);
   background-size: cover;
   position: relative;
   margin-top: -2px;
+  min-height: 600px;
+  border: 1px solid transparent;
   .star{
     width: 150px;
     position: absolute;
@@ -421,13 +433,27 @@ p.special{
   }
   .title{
     font-size: 3rem;
-    margin-top: 12vh;
+    margin-top: 26%;
   }
   .panel{
-    margin-top: 5vh;
+    margin: 5vh 0;
+    position: relative;
     img{
       width: 100%;
       object-fit: cover;
+    }
+    button{
+      border-image-source: url(/static/img/invite-btn.png);
+      border-image-slice: 0 0 fill;
+      border-image-width: 0px;
+      background-color: rgba(255, 255, 255, 0);
+      font-family: 'special';
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      font-size: 1.5rem;
+      position: absolute;
+      bottom: -5%;
+      left: 6.5%;
     }
   }
   .ship{
@@ -438,3 +464,18 @@ p.special{
   }
 }
 
+header.header{
+  .balance{
+    height: 3.7rem;
+    border-image-source: url(/static/img/balance.png);
+    border-image-slice: 0 0 fill;
+    border-image-width: 0px;
+    padding: 0px 20px;
+    line-height: 2.7rem;
+  }
+  .button{
+    img{
+      height: 3.7rem;
+    }
+  }
+}

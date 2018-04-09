@@ -1,6 +1,6 @@
 <template>
-  <div class="invite">
-      <div class="container">
+  <div class="invite" id="invite">
+      <div class="container" v-if="isLogin">
           <div class="user-center">
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
@@ -29,13 +29,23 @@
               </p>
           </div>
       </div>
-
+      <div class="container" v-else>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
+          <p class="text-center" style="margin: 3vh 0;">Your friends and you earn tokens together.<br/>
+              The more friends invited, the more tokens rewarded.</p>
+          <div class="des">
+              <img src="/static/img/invite-des.png" alt="">
+          </div>
+          <p class="text-center" style="margin: 2vh 0;">Join our Discord channel for occasional DCVT airdrops: <a href="">discord.gg/McpaHrq</a></p>
+          <img src="/static/img/spaceship.png" alt="spaceship" class="img100">
+      </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Invite',
+  props:['isLogin'],
   data () {
     return {
       msg: 'Welcome to Invite'

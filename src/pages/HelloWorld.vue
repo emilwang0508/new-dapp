@@ -1,6 +1,7 @@
 <template>
   <div class="index">
       <div class="banner">
+          <Header />
           <img src="/static/img/logo.png" alt="logo" class="logo">
           <p class="text-shadow text-center">AAA Space Domination MMO on Ethereum Blockchain</p>
           <a href="#" class="button-more"><img :src=imgMore alt="button-more"></a>
@@ -8,12 +9,13 @@
           <div class="h50"></div>
       </div>
       <Rule />
-      <Invite></Invite>
+      <Invite :isLogin=isLogin></Invite>
   </div>
 </template>
 
 <script>
 import '../assets/css/main.scss'
+import Header from '../components/Header'
 import Lottery from '../components/Lottery'
 import Invite from '../components/Invite'
 import Rule from '../components/Rule'
@@ -22,11 +24,15 @@ export default {
   name: 'Hello',
   data () {
     return {
-        imgMore:imgMore
+        imgMore:imgMore,
+        isLogin: false
     }
   },
   components:{
-    Lottery, Invite, Rule
+    Lottery, Invite, Rule, Header
+  },
+  created(){
+    this.isLogin = this.$store.state.logined
   }
 }
 </script>

@@ -7,12 +7,20 @@
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
-        <label for="email" >Email</label>
-        <input type="text" v-model="email" id="email">
-        <label for="password" >Password</label>
-        <input type="password" v-model="password" id="password">
+        <div class="input-group">
+          <label for="email" >Email</label>
+          <input type="email" v-model="name" id="email" name="name" v-validate="'required|alpha_dash|min:4|max:30'">
+          <p  v-show="errors.has('name')" class="error">{{ errors.first('name') }}</p>
+
+        </div>
+        <div class="input-group">
+          <label for="password" >Password</label>
+          <input type="password" v-model="password" id="password" name="password" v-validate="'required|min:6|max:30'">
+          <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
+
+        </div>
         <div class="h50"></div>
-        <button class="submit">Submit</button>
+        <button class="submit"  v-on:click="login">Submit</button>
       </div>
       <p class="text-center text-shadow">if you don't have an account, please <a href="/#/sign-up">register</a></p>
 
@@ -22,13 +30,33 @@
 
 <script>
 import '../assets/css/main.scss'
+import { mapGetters, mapActions } from 'vuex'
+import { Toast } from 'mint-ui'
+
 export default {
   name: 'SignIn',
   data () {
     return {
         msg: 'SignIn',
-        email: '',
+        name: '',
         password: ''
+    }
+  },
+  methods: {
+    login: function (event) {
+      if (event) {
+        this.$validator.validateAll().then((result) => {
+          let data = {email: this.email,password: this.password}
+          let _this = this
+          this.$store.dispatch('login',data)
+            .then((res)=>{
+              _this.$router.push('/')
+            }).catch((error)=>{
+            Toast(error)
+          })
+        })
+
+      }
     }
   }
 }

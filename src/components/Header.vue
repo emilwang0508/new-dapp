@@ -1,6 +1,10 @@
 <template>
-    <header class="header">
-        <h1>{{ msg }}</h1>
+    <header class="header" v-if="this.$store.state.logined===true">
+        <div class="balance fl"><p class="text-shadow">{{this.deposit}} DCVT</p></div>
+        <!--<div class="button fr"><img src="/static/img/user-icon.png" alt="icon"></div>-->
+    </header>
+    <header class="header" v-else>
+        <div class="button fr"><img src="/static/img/user-icon.png" alt="icon"></div>
     </header>
 </template>
 
@@ -9,8 +13,13 @@
         name: 'HelloWorld',
         data () {
             return {
-                msg: 'Welcome to Your Vue.js App'
+              deposit: 0
             }
+        },
+        created(){
+          if (this.$store.state.userInfo!==null){
+            this.deposit = this.$store.state.userInfo.deposit
+          }
         }
     }
 </script>

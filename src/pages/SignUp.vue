@@ -1,49 +1,80 @@
 <template>
-  <div class="sign-panel ">
-    <div class="container">
-      <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
+<div class="sign-panel ">
+  <div class="container">
+    <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
     <p class="des text-shadow">AAA Space Domination MMO on Ethereum Blockchain</p>
     <div class="form-panel">
       <i><img src="/static/img/form-corner.png" alt=""></i>
       <i><img src="/static/img/form-corner.png" alt=""></i>
       <i><img src="/static/img/form-corner.png" alt=""></i>
       <div class="input-group">
-        <label for="email" >Email</label>
-        <input type="text" v-model="email">
+      <label for="name" >Name</label>
+        <input type="text" v-model="name" v-validate="'required|alpha_dash|min:4|max:30'" name="name">
+        <p  v-show="errors.has('name')" class="error">{{ errors.first('name') }}</p>
       </div>
       <div class="input-group">
-        <label for="email" >Password</label>
-        <input type="password" v-model="password">
+      <label for="email" >Email</label>
+        <input type="email" v-model="email" name="email" v-validate="'required|email'">
+        <p  v-show="errors.has('email')" class="error">{{ errors.first('email') }}</p>
       </div>
       <div class="input-group">
-        <label for="code" >Invitation code</label>
-        <input type="text" v-model="code">
+      <label for="password" >Password</label>
+      <input type="password" v-model="password" name="password" v-validate="'required|min:6|max:30'">
+        <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
+      </div>
+      <div class="input-group">
+      <label for="code" >Invitation code</label>
+      <input type="text" v-model="code">
       </div>
       <div class="input-group verifyCode">
-        <label for="verifyCode" >Verification Code</label>
-        <input type="text" v-model="verifyCode">
+      <label for="verifyCode" >Verification Code</label>
+      <input type="text" v-model="verifyCode">
       </div>
       <div class="h50"></div>
-      <button class="submit">Submit</button>
+      <button class="submit" v-on:click="handleSumit">Submit</button>
     </div>
     <p class="text-center text-shadow">I already have an account, please <a href="/#/sign-in">login</a></p>
     <div class="h50"></div>
   </div>
-    </div>
+</div>
 </template>
 
 <script>
 import '../assets/css/main.scss'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'SignUp',
   data () {
     return {
-      msg: 'SignUp',
+      name:'',
+      msg: '',
       email: '',
       password: '',
       code: '',
-      verifyCode:''
+      verifyCode:'',
+    }
+  },
+  methods:{
+    handleSumit: function(event){
+      let _this = this
+      this.$validator.validateAll().then((result) => {
+        const form = {
+          name:this.name,
+          email:this.email,
+          password: this.password,
+          invite_code: this.code,
+          addresss: this.code
+        }
+        this.$store.dispatch('signUp',form )
+          .then(res=>{
+            _this.$router.push('/')
+          })
+          .catch(error=>{
+
+          })
+      });
+
     }
   }
 }
@@ -51,61 +82,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-  @font-face {
-    font-family: 'special';
-    src: url('/static/font/neuropol.eot');
-    src: url('/static/font/neuropol.eot?#iefix') format('embedded-opentype'),
-    url('/static/font/neuropol.woff') format('woff'),
-    url('/static/font/neuropol.ttf') format('truetype'),
-    url('/static/font/neuropol.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
-/* .sign-panel{
-  background-image: url("/static/img/background.png");
-  height: calc(100vh + 6.8rem);
-  margin-top: -1px;
-  padding-top: 1px;
-  .des{
-    text-align: center;
-    font-size: 1.7rem;
-  }
-}
-  .form-panel{
-    border: 1px solid #7594cf;
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    label{
-      font-size: 1.4rem;
-    }
-    input{
-      border:1px solid #7594cf;
-      width: calc(100% - 20px);
-      height: 3rem;
-      background-color: transparent;
-      margin-bottom: 12px;
-      color: #ffffff;
-      padding: 0 10px;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-    .img{
 
-    }
-    .submit{
-      background-image: url(/static/img/submit-btn.png);
-      position: absolute;
-      width: 14rem;
-      height: 4rem;
-      right: -16px;
-      bottom: -16px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-color: transparent;
-      border: none;
-      font-family: 'special';
-    }
-  } */
 </style>
