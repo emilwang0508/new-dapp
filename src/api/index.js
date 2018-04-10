@@ -4,9 +4,8 @@ export function loginAction(name, password){
     url: '/api/user/login',
     method: 'post',
     data: {
-      name,
-      password,
-      '_csrf': window.axios.defaults.headers.common['csrf-token']
+      name:name,
+      password:password,
     }
   })
 }
