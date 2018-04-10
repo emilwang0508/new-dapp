@@ -4,7 +4,7 @@
           <Header />
           <img src="/static/img/logo.png" alt="logo" class="logo">
           <p class="text-shadow text-center">AAA Space Domination MMO on Ethereum Blockchain</p>
-          <a href="#" class="button-more"><img :src=imgMore alt="button-more"></a>
+          <a href="/#/intro" class="button-more"><img :src=imgMore alt="button-more"></a>
           <Lottery />
           <div class="h50"></div>
       </div>

@@ -22,8 +22,8 @@ blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content:"";content: none;}
 a { 
     color:#06f; text-decoration:none;cursor: pointer;
-    &:link,&:visited, &:active{color: #06f;}
-    &:hover, &:focus {color:#f60; text-decoration:underline;outline:none;}
+    &:link,&:visited, &:active{color: inherit;}
+    &:hover, &:focus {color:inherit; text-decoration:none;outline:none;}
 }
 
 //清理浮动
@@ -313,18 +313,26 @@ p.text-shadow{
   .title{
     font-size: 2rem;
   }
-  >div{
-    position: relative;
-    img.border{
-      width: 100%;
-      position: absolute;
-      animation: rotating 10s infinite;
-    }
-    img.capsule{
-      width: 80%;
-      margin: 10%;
+  .lottery-panel{
+    >div{
+      position: relative;
+      height: 20vh;
+      img.border{
+        width: 100%;
+        position: absolute;
+        animation: rotating 10s infinite;
+      }
+      img.capsule{
+        width: 80%;
+        margin: 10%;
+      }
+      img.opened{
+        width: 100%;
+      }
     }
   }
+
+
   .des{
     margin: 2rem 0;
   }
@@ -476,6 +484,54 @@ header.header{
   .button{
     img{
       height: 3.7rem;
+    }
+  }
+}
+.intro{
+  background-image: url("/static/img/background.png");
+  min-height: calc(100vh);
+  margin-top: -1px;
+  padding-top: 1px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // min-height: 650px;
+  .des{
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  .close-btn{
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: 1;
+    position: fixed;
+  }
+  .container{
+    position: relative;
+    text-align: center;
+    >*{
+      position: relative;
+      z-index: 2;
+    }
+    img.intro-img{
+      width: 100%;
+      object-fit: cover;
+      margin: 10vh 0;
+    }
+    .link{
+      text-align: center;
+      display: inline-block;
+      height: 35px;
+      width: 80vw;
+      max-width: 280px;
+      line-height: 22px;
+      border-image-source: url(/static/img/video-btn-border.png);
+      border-image-slice: 0 0 fill;
+      border-image-width: 0px;
+      margin: 10px 0;
+      p{
+        font-size: 2rem;
+      }
     }
   }
 }

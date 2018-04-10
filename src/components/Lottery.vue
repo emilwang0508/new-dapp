@@ -1,17 +1,20 @@
 <template>
 
     <div class="lottery container">
-        <p class="title text-center text-shadow special" v-on:click="test">Supply Depot</p>
-        <p class="text-shadow text-center">You have<span> 3 </span> chances left today</p>
-        <div class="col-xs-4"  v-for="(item, index) in items" ><div v-html="item.content"  v-on:click="handleLottery" ></div></div>
-        <div class="cf"></div>
-        <!--<div class="h50"></div>-->
+        <p class="title text-center text-shadow special">Supply Depot</p>
+        <p class="text-shadow text-center">You have<span> {{this.$store.state.lottery.times}} </span> chances left today</p>
+        <div class="lottery-panel" >
+            <div  v-for="(item, index) in items" class="col-xs-4" v-on:click="handleLottery(index)" v-html="item.content"  ></div>
+        </div>
+        <div class="h50"></div>
+        <div class="clear-fix"></div>
         <p class="des">The Galactic Constructon Corporation provides bountiful funds to bankroll your invasion efforts. Choose your supply crate now to claim your funding.</p>
 
     </div>
 </template>
 
 <script>
+    import { MessageBox } from 'mint-ui'
     export default {
         name: 'lottery',
         data () {
@@ -27,17 +30,52 @@
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                ]
+                ],
+              lottery:{
+                  times: this.$store.state.lottery.times,
+                  selected: this.$store.state.lottery.selected
+              }
             }
         },
         methods:{
           handleLottery: function (e) {
-            alert(111)
-//            this.items[e].content = ``
-          },
-          test: function () {
-            alert('124')
+            let session = this.$store.state.session
+            if (session==null||session==''){
+              MessageBox.alert('',{message: 'Need to login to complete this action!',title: 'Tips',confirmButtonText: 'Log In'}).then(action=>{
+                this.$router.push('/sign-in')
+              })
+            }else {
+              if(this.$store.state.lottery.selected.indexOf(e)>-1){
+
+              }else {
+                if (this.$store.state.lottery.times===0){
+                  MessageBox.alert('',{message: 'Today\'s lucky draw runs out. Please try again tomorrow!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
+                  })
+
+                }
+                else{
+                  let data = {
+                    id: e,
+                    session: session
+                  }
+                  this.$store.dispatch('lottery',data)
+                    .then((res)=>{
+                      this.items[e].content = `<img src="/static/img/opened.png" class="opened">`
+                    })
+                    .catch((error)=>{
+
+                    })
+                }
+              }
+
+
+
+
+
+            }
+
           }
+
         }
     }
 </script>

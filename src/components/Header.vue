@@ -13,7 +13,7 @@
         name: 'HelloWorld',
         data () {
             return {
-              deposit: 0
+              deposit:  (this.$store.state.userInfo!==null)?this.$store.state.userInfo.deposit : 0
             }
         },
         created(){

@@ -8,8 +8,50 @@ const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 15000                  // 请求超时时间
 });
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+window.axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+window.axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-Requested-With,content-type';
+window.axios.defaults.headers.common['Access-Control-Allow-Credentials'] = true;
+window.axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+window.axios.defaults.headers.common['credentials'] = 'same-origin';
+
+/*if(window.axios.defaults.headers.common['csrf-token']==undefined){
+  console.log(window.axios.defaults.headers.common['csrf-token'])
+  axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
+    if (res.status==200){
+      let csrf_token = res.data.msg
+      window.axios.defaults.headers.common['csrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['_csrf'] = csrf_token;
+      window.axios.defaults.headers.common['xsrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['credentials'] = 'same-origin';
+    }
+  }).catch((error)=>{
+      Toast(error)
+  })
+}*/
+/*axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
+    if (res.status==200){
+      let csrf_token = res.data.msg
+      window.axios.defaults.headers.common['csrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['_csrf'] = csrf_token;
+      window.axios.defaults.headers.common['xsrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
+      window.axios.defaults.headers.common['credentials'] = 'same-origin';
+    }
+}).catch((error)=>{
+
+})*/
+
 // respone拦截器
 service.interceptors.response.use(
+
   response => {
     /**
      * code为非200是抛错 可结合自己业务进行修改

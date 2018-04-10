@@ -21,10 +21,10 @@
           <div class="code-panel">
               <p>My Invitation Code</p>
               <div class="">
-                  DXXGVR<div class="copy">COPY</div>
+                  DXXGVR<div class="copy copy-code" data-clipboard-text="DXXGVR"  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
               <p>Play Decentraverse using this link</p>
-              <div class=""><p>da.dai.io/code?=DXXGVR </p><div class="copy">COPY</div></div>
+              <div class=""><p>da.dai.io/code?=DXXGVR </p><div class="copy copy-link" data-clipboard-text="da.dai.io/code?=DXXGVR" v-on:click="copyContent('.copy-link')">COPY</div></div>
               <p class="tips">Share a screenshot of this screen to earn lots of DCVT!
               </p>
           </div>
@@ -43,15 +43,38 @@
 </template>
 
 <script>
-export default {
-  name: 'Invite',
-  props:['isLogin'],
-  data () {
-    return {
-      msg: 'Welcome to Invite'
+    import Clipboard from 'clipboard';
+    import { MessageBox } from 'mint-ui'
+    export default {
+      name: 'Invite',
+      props:['isLogin'],
+      data () {
+        return {
+          msg: 'Welcome to Invite'
+        }
+      },
+      methods:{
+        copyContent(dom){
+          console.log(dom)
+            let clipboard = new Clipboard(dom)
+          clipboard.on('success', e => {
+            MessageBox.alert('',{message: 'Copy it successfully and share it with your friends!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
+
+            })
+            // 释放内存
+            clipboard.destroy()
+          })
+          clipboard.on('error', e => {
+            // 不支持复制
+            MessageBox.alert('',{message: 'This browser does not support copy!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
+
+            })
+            // 释放内存
+            clipboard.destroy()
+          })
+        }
+      }
     }
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

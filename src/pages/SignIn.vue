@@ -8,7 +8,7 @@
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <div class="input-group">
-          <label for="email" >Email</label>
+          <label for="email" >Name</label>
           <input type="email" v-model="name" id="email" name="name" v-validate="'required|alpha_dash|min:4|max:30'">
           <p  v-show="errors.has('name')" class="error">{{ errors.first('name') }}</p>
 
@@ -46,17 +46,30 @@ export default {
     login: function (event) {
       if (event) {
         this.$validator.validateAll().then((result) => {
-          let data = {email: this.email,password: this.password}
-          let _this = this
-          this.$store.dispatch('login',data)
-            .then((res)=>{
-              _this.$router.push('/')
-            }).catch((error)=>{
-            Toast(error)
-          })
+          if (result){
+            let data = {name: this.name,password: this.password}
+            let _this = this
+            this.$store.dispatch('login',data)
+              .then((res)=>{
+                console.log(res)
+                _this.getUserInfo(res.msg.session)
+              }).catch((error)=>{
+              Toast(error)
+            })
+          }
+
         })
 
       }
+    },
+    getUserInfo(session){
+      let _this = this
+      this.$store.dispatch('getUserInfo',session)
+        .then((res)=>{
+          _this.$router.push('/')
+        }).catch((error)=>{
+        Toast(error)
+      })
     }
   }
 }

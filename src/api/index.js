@@ -1,23 +1,44 @@
 import request from '../utils/request'
-export function loginAction(email, password){
+export function loginAction(name, password){
   return request({
-    url: '/sign-in',
+    url: '/api/user/login',
     method: 'post',
     data: {
-      email,
-      password
+      name,
+      password,
+      '_csrf': window.axios.defaults.headers.common['csrf-token']
     }
   })
 }
 export function signUpAction(form){
   return request({
-    url: '/sign-up',
+    url: '/api/user/register',
     method: 'post',
     data: {
-      name:form.email,
+      name:form.name,
+      email:form.email,
       password: form.password,
-      invite_code: form.code,
-      addresss: form.code
+      invite_code: form.invite_code,
+      addresss: form.address
+    }
+  })
+}
+export function lotteryAction(form){
+  return request({
+    url: '/api/game/lottery',
+    method: 'post',
+    data: {
+      id:form.id,
+      session: form.session,
+    }
+  })
+}
+export function getUserInfoAction(session){
+  return request({
+    url: '/api/user/info',
+    method: 'post',
+    data: {
+      session: session
     }
   })
 }

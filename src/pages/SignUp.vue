@@ -59,20 +59,23 @@ export default {
     handleSumit: function(event){
       let _this = this
       this.$validator.validateAll().then((result) => {
-        const form = {
-          name:this.name,
-          email:this.email,
-          password: this.password,
-          invite_code: this.code,
-          addresss: this.code
-        }
-        this.$store.dispatch('signUp',form )
-          .then(res=>{
-            _this.$router.push('/')
-          })
-          .catch(error=>{
+        if(result){
+          const form = {
+            name:this.name,
+            email:this.email,
+            password: this.password,
+            invite_code: this.code,
+            addresss: this.address,
 
-          })
+          }
+          this.$store.dispatch('signUp',form )
+            .then(res=>{
+              _this.$router.push('/')
+            })
+            .catch(error=>{
+
+            })
+        }
       });
 
     }
