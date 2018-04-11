@@ -446,8 +446,10 @@ p.special{
     margin-top: 26%;
   }
   .panel{
-    margin: 5vh 0;
+
+    margin: 2vh auto;
     position: relative;
+    max-width: 600px;
     img{
       width: 100%;
       object-fit: cover;

@@ -40,8 +40,23 @@ export default {
     if (session === null||session === 'null'||session === ''){
       return false
     }
-    this.$store.dispatch('getUserInfo', session)
-    this.$store.commit('SET_SESSION',session)
+
+    axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
+      if (res.status==200){
+        let csrf_token = res.data.msg
+        window.axios.defaults.headers.common['csrf-token'] = csrf_token;
+        window.axios.defaults.headers.common['_csrf'] = csrf_token;
+        window.axios.defaults.headers.common['xsrf-token'] = csrf_token;
+        window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
+        window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
+        window.axios.defaults.headers.common['credentials'] = 'same-origin';
+        this.$store.dispatch('getUserInfo', session)
+        this.$store.commit('SET_SESSION',session)
+      }
+    }).catch((error)=>{
+
+    })
+
 
 
     if ((typeof session)===undefined&&session===undefined){

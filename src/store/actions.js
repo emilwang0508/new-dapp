@@ -9,10 +9,9 @@ const actions = {
     commit(types.SET_SESSION, data)
   },
   login({commit}, data) {
-
+    this.setCsrfToken
     return new Promise((resolve, reject)=>{
       api.loginAction(data.name, data.password).then(response => {
-        console.log(response)
         if(response.code==200){
           let data = response.msg
           commit(types.SET_SESSION, data.session)
@@ -27,6 +26,7 @@ const actions = {
     commit(types.LOGOUT)
   },
   signUp({commit}, form) {
+    this.setCsrfToken
     return new Promise((resolve, reject)=>{
       api.signUpAction(form).then(response => {
         console.log(response)
@@ -37,6 +37,7 @@ const actions = {
     })
   },
   lottery({commit}, data) {
+    this.setCsrfToken
     return new Promise((resolve, reject)=>{
       api.lotteryAction(data).then(response => {
         if(response.code==200){
@@ -51,6 +52,7 @@ const actions = {
     })
   },
   getUserInfo({commit}, session) {
+    this.setCsrfToken
     return new Promise((resolve, reject)=>{
       api.getUserInfoAction(session).then(response => {
         if(response.code==200){
@@ -61,5 +63,8 @@ const actions = {
       { reject(error) })
     })
   },
+  setCsrfToken({commit}){
+
+  }
 }
 export default actions

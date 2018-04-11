@@ -56,7 +56,15 @@ export default {
 
             })
           }
-
+/*          let data = {
+            name: this.name,
+            password: this.password
+          }
+          axios('http://testv2.decentraverse.io/api/user/login',{
+            method: "post",
+            data: data,
+            withCredentials:true
+          })*/
         })
 
       }
