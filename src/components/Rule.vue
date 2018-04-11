@@ -5,7 +5,7 @@
     <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>
     <div class="panel">
         <img src="/static/img/second-des.png" alt="des">
-        <button>invite friends</button>
+        <button @click="goInvite('#invite')">invite friends</button>
 
     </div>
     <img :src=imgShip alt="spaceship" class="ship">
@@ -22,6 +22,12 @@ export default {
         msg: 'Welcome to Your Rule App',
         imgSrc: imgSrc,
         imgShip: ship
+    }
+  },
+  methods:{
+    goInvite:function (selector) {
+      let anchor = document.body.querySelector(selector)
+      document.documentElement.scrollTop = anchor.offsetTop
     }
   }
 }

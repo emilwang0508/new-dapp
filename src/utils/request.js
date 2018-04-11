@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { Toast, MessageBox } from 'mint-ui'
+import {Toast} from 'mint-ui'
 import store from '../store'
 
 
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
-  timeout: 15000                  // 请求超时时间
+  timeout: 30000                  // 请求超时时间
 });
 
 window.axios = require('axios');
@@ -43,27 +43,42 @@ service.interceptors.response.use(
     const res = response.data;
     //const res = response;
     if (res.code !== '200' && res.code !== 200) {
-      if (res.code === '4001' || res.code === 4001) {
-/*        MessageBox.confirm('用户名或密码错误，请重新登录', '重新登录', {
-          confirmButtonText: '重新登录',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
-          })
-        })*/
-      }
-      if (res.code === '4009' || res.code === 4009) {
-/*        MessageBox.confirm('该用户名已存在，请重新注册！', '重新注册', {
-          confirmButtonText: '重新注册',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
-          })
-        })*/
+      let code = res.code
+      // Toast('11111111111111111111')
+      switch (code){
+        case 100:
+          Toast('missing parameter!!!')
+          break;
+        case 101:
+          Toast('login timeout!!!')
+          break;
+        case 102:
+          Toast('bonus over!!!')
+          break;
+        case 103:
+          Toast('over limit!!!')
+          break;
+        case 404:
+          Toast('unknow error!!!')
+          break;
+        case 501:
+          Toast('error invite code!!!')
+          break;
+        case 502:
+          Toast('name or email exist!!!')
+          break;
+        case 503:
+          Toast('wrong login info!!!')
+          break;
+        case 504:
+          Toast('wrong password!!!')
+          break;
+        case 505:
+          Toast('session error!!!')
+          break;
+        default:
+          Toast('error')
+          break;
       }
       return Promise.reject('error')
     } else {
@@ -71,11 +86,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-/*    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    });*/
+    Toast(error)
     return Promise.reject(error)
   }
 )

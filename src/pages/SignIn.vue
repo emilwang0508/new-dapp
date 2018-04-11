@@ -51,10 +51,9 @@ export default {
             let _this = this
             this.$store.dispatch('login',data)
               .then((res)=>{
-                console.log(res)
                 _this.getUserInfo(res.msg.session)
               }).catch((error)=>{
-              Toast(error)
+
             })
           }
 

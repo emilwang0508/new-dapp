@@ -27,14 +27,14 @@ export function lotteryAction(form){
     url: '/api/game/lottery',
     method: 'post',
     data: {
-      id:form.id,
+      card_id: form.id,
       session: form.session,
     }
   })
 }
 export function getUserInfoAction(session){
   return request({
-    url: '/api/user/info',
+    url: '/api/user/user_info',
     method: 'post',
     data: {
       session: session

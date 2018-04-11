@@ -55,12 +55,12 @@
                 }
                 else{
                   let data = {
-                    id: e,
+                    id: e.toString(),
                     session: session
                   }
                   this.$store.dispatch('lottery',data)
                     .then((res)=>{
-                      this.items[e].content = `<img src="/static/img/opened.png" class="opened">`
+                      this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
                     })
                     .catch((error)=>{
 

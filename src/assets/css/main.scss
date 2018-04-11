@@ -315,8 +315,10 @@ p.text-shadow{
   }
   .lottery-panel{
     >div{
+      text-align: center;
       position: relative;
       height: 20vh;
+      font-size: 1.0rem;
       img.border{
         width: 100%;
         position: absolute;
@@ -481,9 +483,29 @@ header.header{
     padding: 0px 20px;
     line-height: 2.7rem;
   }
-  .button{
+  .menu{
+    position: relative;
     img{
       height: 3.7rem;
+      right: 0;
+    }
+    .menu-panel{
+      display: none;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      padding: 5px 10px;
+      width: 60px;
+      top: 3.7rem;
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 5px;
+      >*{
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+    .menu-panel.active{
+      display: inline-block;
     }
   }
 }
@@ -534,4 +556,11 @@ header.header{
       }
     }
   }
+}
+.verify-bar-area{
+  background: transparent!important;
+  margin: 10px auto;
+}
+button.verify-btn{
+  display: none;
 }

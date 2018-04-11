@@ -25,7 +25,7 @@ export default {
   data () {
     return {
         imgMore:imgMore,
-        isLogin: false
+        isLogin: false,
     }
   },
   components:{
@@ -33,6 +33,20 @@ export default {
   },
   created(){
     this.isLogin = this.$store.state.logined
+    let session = localStore.get('session')
+    if ((typeof session)===undefined||session===undefined||session==='undefined'){
+        return false
+    }
+    if (session === null||session === 'null'||session === ''){
+      return false
+    }
+    this.$store.dispatch('getUserInfo', session)
+    this.$store.commit('SET_SESSION',session)
+
+
+    if ((typeof session)===undefined&&session===undefined){
+      return false
+    }
   }
 }
 </script>

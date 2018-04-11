@@ -1,11 +1,11 @@
 <template>
   <div class="invite" id="invite">
-      <div class="container" v-if="isLogin">
+      <div class="container" v-if="this.$store.state.logined">
           <div class="user-center">
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
-                  <p class="name">EmilWong</p>
-                  <p class="bonus text-shadow">BONUS: 524.014 DCVT (=1259.6 USD) </p>
+                  <p class="name">{{this.$store.state.userInfo.name}}</p>
+                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (=1259.6 USD) </p>
                   <p class="invited">Friends Invited: 25 / Friends of Friends Joined: 125 </p>
               </div>
           </div>
@@ -21,10 +21,10 @@
           <div class="code-panel">
               <p>My Invitation Code</p>
               <div class="">
-                  DXXGVR<div class="copy copy-code" data-clipboard-text="DXXGVR"  v-on:click="copyContent('.copy-code')" >COPY</div>
+                  {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
               <p>Play Decentraverse using this link</p>
-              <div class=""><p>da.dai.io/code?=DXXGVR </p><div class="copy copy-link" data-clipboard-text="da.dai.io/code?=DXXGVR" v-on:click="copyContent('.copy-link')">COPY</div></div>
+              <div class=""><p>{{this.BASE_DOMAIN+'/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="this.BASE_DOMAIN+'/sign-up?code='+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
               <p class="tips">Share a screenshot of this screen to earn lots of DCVT!
               </p>
           </div>
@@ -47,10 +47,12 @@
     import { MessageBox } from 'mint-ui'
     export default {
       name: 'Invite',
-      props:['isLogin'],
       data () {
         return {
-          msg: 'Welcome to Invite'
+          msg: 'Welcome to Invite',
+          invite_code: null,
+          invite_link: '',
+          isLogin: this.$store.state.logined
         }
       },
       methods:{

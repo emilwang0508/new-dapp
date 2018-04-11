@@ -28,7 +28,8 @@
       </div>
       <div class="input-group verifyCode">
       <label for="verifyCode" >Verification Code</label>
-      <input type="text" v-model="verifyCode">
+      <!--<input type="text" v-model="verifyCode">-->
+        <Verify :type="3" :barSize="{width:'100%',height:'40px'}"  explain="slide to right" @success="verify('success')"  @error="verify('error')"></Verify>
       </div>
       <div class="h50"></div>
       <button class="submit" v-on:click="handleSumit">Submit</button>
@@ -42,6 +43,7 @@
 <script>
 import '../assets/css/main.scss'
 import { mapGetters, mapActions } from 'vuex'
+import Verify from 'vue2-verify'
 
 export default {
   name: 'SignUp',
@@ -52,32 +54,64 @@ export default {
       email: '',
       password: '',
       code: '',
-      verifyCode:'',
+      isVerified: false,
     }
+  },
+  components:{
+    Verify
   },
   methods:{
     handleSumit: function(event){
       let _this = this
-      this.$validator.validateAll().then((result) => {
-        if(result){
-          const form = {
+      if(this.isVerified == false){
+        _this.$toast('Verification code verification failed')
+      }else {
+        let form
+        (this.code=='')?
+        form = {
+          name:this.name,
+          email:this.email,
+          password: this.password,
+          addresss: this.address,
+        }:
+          form = {
             name:this.name,
             email:this.email,
             password: this.password,
             invite_code: this.code,
             addresss: this.address,
-
           }
-          this.$store.dispatch('signUp',form )
-            .then(res=>{
-              _this.$router.push('/')
-            })
-            .catch(error=>{
+        this.$validator.validateAll().then((result) => {
+          if(result){
 
-            })
-        }
-      });
+            this.$store.dispatch('signUp',form )
+              .then(res=>{
+                console.log(res.msg.session)
+                _this.getUserInfo(res.msg.session)
 
+              })
+              .catch(error=>{
+
+              })
+          }
+        });
+      }
+    },
+    verify(e){
+      if (e=='success'){
+        this.isVerified = true
+      }else{
+        this.isVerified = false
+      }
+    }
+    ,getUserInfo(session){
+      let _this = this
+      this.$store.dispatch('getUserInfo',session)
+        .then((res)=>{
+          _this.$router.push('/')
+        }).catch((error)=>{
+
+      })
     }
   }
 }

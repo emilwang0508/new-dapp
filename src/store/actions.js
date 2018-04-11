@@ -5,20 +5,17 @@ const actions = {
   intiUser({ dispatch }, data) {
     dispatch(types.SET_USER_INFO,data)
   },
+  setSession({commit} ,data) {
+    commit(types.SET_SESSION, data)
+  },
   login({commit}, data) {
 
     return new Promise((resolve, reject)=>{
       api.loginAction(data.name, data.password).then(response => {
-        let res = response.data
         console.log(response)
-        if(response.status==200&&res.code==200){
-          let data = res.msg
- /*         commit(types.SET_USER_INFO, data)
-          console.log(data)*/
+        if(response.code==200){
+          let data = response.msg
           commit(types.SET_SESSION, data.session)
-          // commit(types.LOGIN)
-        }else {
-          Toast(res);
         }
         resolve(response); }).catch(
           error => {
@@ -32,9 +29,9 @@ const actions = {
   signUp({commit}, form) {
     return new Promise((resolve, reject)=>{
       api.signUpAction(form).then(response => {
-        let res = response.data
-        if(res.code==200){
-          commit(types.SET_USER_INFO, res.msg)
+        console.log(response)
+        if(response.code==200){
+          commit(types.SET_SESSION, response.msg.session)
         }
         resolve(response); }).catch(error => { reject(error) })
     })
@@ -42,21 +39,22 @@ const actions = {
   lottery({commit}, data) {
     return new Promise((resolve, reject)=>{
       api.lotteryAction(data).then(response => {
-        let res = response.data
-        if(res.code==200){
-          commit(types.ADD_OVERAGE, res.msg.bonus)
+        if(response.code==200){
+          commit(types.ADD_OVERAGE, response.msg.bonus)
           commit(types.LOTTERY, data.id)
         }
         resolve(response); }).catch(error =>
-      { reject(error) })
+      {
+        reject(error)
+
+      })
     })
   },
   getUserInfo({commit}, session) {
     return new Promise((resolve, reject)=>{
       api.getUserInfoAction(session).then(response => {
-        let res = response.data
-        if(res.code==200){
-          commit(types.SET_USER_INFO, res.msg)
+        if(response.code==200){
+          commit(types.SET_USER_INFO, response.msg)
           commit(types.LOGIN)
         }
         resolve(response); }).catch(error =>
