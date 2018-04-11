@@ -373,9 +373,13 @@ p.special{
     }
     .name{
       font-family: 'special';
+      font-size: 1.5rem;
     }
     .bonus{
-      font-size: 0.9rem;
+      font-size: 1.5rem;
+    }
+    .invited{
+       font-size: 1.5rem;
     }
   }
   .des{
@@ -504,6 +508,7 @@ header.header{
       >*{
         height: 30px;
         line-height: 30px;
+        font-size: 1.5rem;
       }
     }
     .menu-panel.active{

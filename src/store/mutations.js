@@ -9,7 +9,8 @@ const mutations = {
   },
   [types.LOGOUT](state){
     state.logined = false
-    localStore.set('session', null)
+    state.session = null
+    localStore.set('session', null) 
   },
   [types.SET_SESSION](state,data){
     state.session = data
@@ -21,6 +22,20 @@ const mutations = {
   [types.LOTTERY](state, id) {
     state.lottery.selected.push(id)
     state.lottery.times--
+  },
+  [types.RESET](state) {
+    state.count = 0
+    state.logined = false
+    state.userInfo = null
+    state.remainingLotteryTimes = 3
+    state.lottery.times = 3
+    state.lottery.selected = []
+    state.session = null
+
+  },
+  [types.SET_INVITE_STATISTICS](state, data) {
+    state.inviteStatistics.primary = data.primary
+    state.inviteStatistics.secondary = data.secondary
   }
 }
 export default mutations

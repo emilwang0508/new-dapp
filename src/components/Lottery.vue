@@ -32,23 +32,23 @@
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
                 ],
               lottery:{
-                  times: this.$store.state.lottery.times,
-                  selected: this.$store.state.lottery.selected
+                  times: 3,
+                  selected: []
               }
             }
         },
         methods:{
           handleLottery: function (e) {
             let session = this.$store.state.session
+            let _this = this
             if (session==null||session==''){
               MessageBox.alert('',{message: 'Need to login to complete this action!',title: 'Tips',confirmButtonText: 'Log In'}).then(action=>{
                 this.$router.push('/sign-in')
               })
             }else {
-              if(this.$store.state.lottery.selected.indexOf(e)>-1){
-
-              }else {
-                if (this.$store.state.lottery.times===0){
+              console.log(_this.lottery.selected.indexOf(e)<0)
+              if(this.lottery.selected.indexOf(e)<0){
+                if (this.lottery.times===0){
                   MessageBox.alert('',{message: 'Today\'s lucky draw runs out. Please try again tomorrow!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
                   })
 
@@ -60,17 +60,17 @@
                   }
                   this.$store.dispatch('lottery',data)
                     .then((res)=>{
-                      this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
+                      _this.lottery.selected.push(e)
+                      _this.lottery.times--
+                      _this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
                     })
                     .catch((error)=>{
 
                     })
                 }
+              }else{
+                return false
               }
-
-
-
-
 
             }
 

@@ -50,6 +50,7 @@ export default {
         window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
         window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
         window.axios.defaults.headers.common['credentials'] = 'same-origin';
+        this.$store.dispatch('inviteStatistics', session)
         this.$store.dispatch('getUserInfo', session)
         this.$store.commit('SET_SESSION',session)
       }

@@ -14,7 +14,12 @@ const state = {
     times: 3,
     selected:[]
   },
-  session: null
+  session: null,
+  inviteStatistics:{
+    "primary": 0,
+    "secondary": 0
+  }
+
 }
 
 export default new Vuex.Store({

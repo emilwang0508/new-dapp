@@ -9,7 +9,7 @@ const actions = {
     commit(types.SET_SESSION, data)
   },
   login({commit}, data) {
-    this.setCsrfToken
+
     return new Promise((resolve, reject)=>{
       api.loginAction(data.name, data.password).then(response => {
         if(response.code==200){
@@ -24,9 +24,10 @@ const actions = {
   },
   logout({commit}) {
     commit(types.LOGOUT)
+    commit(types.RESET)
   },
   signUp({commit}, form) {
-    this.setCsrfToken
+
     return new Promise((resolve, reject)=>{
       api.signUpAction(form).then(response => {
         console.log(response)
@@ -37,7 +38,7 @@ const actions = {
     })
   },
   lottery({commit}, data) {
-    this.setCsrfToken
+
     return new Promise((resolve, reject)=>{
       api.lotteryAction(data).then(response => {
         if(response.code==200){
@@ -52,7 +53,6 @@ const actions = {
     })
   },
   getUserInfo({commit}, session) {
-    this.setCsrfToken
     return new Promise((resolve, reject)=>{
       api.getUserInfoAction(session).then(response => {
         if(response.code==200){
@@ -63,8 +63,16 @@ const actions = {
       { reject(error) })
     })
   },
-  setCsrfToken({commit}){
-
+  inviteStatistics({commit}, session){
+    return new Promise((resolve, reject)=>{
+      api.inviteStatistics(session).then(response => {
+        if(response.code==200){
+          commit(types.SET_USER_INFO, response.msg)
+          commit(types.LOGIN)
+        }
+        resolve(response); }).catch(error =>
+      { reject(error) })
+    })
   }
 }
 export default actions

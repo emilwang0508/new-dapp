@@ -41,3 +41,12 @@ export function getUserInfoAction(session){
     }
   })
 }
+export function inviteStatistics(session){
+  return request({
+    url: '/api/user/user_info',
+    method: 'post',
+    data: {
+      session: session
+    }
+  })
+}

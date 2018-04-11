@@ -6,11 +6,11 @@
               <div class="fl">
                   <p class="name">{{this.$store.state.userInfo.name}}</p>
                   <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (=1259.6 USD) </p>
-                  <p class="invited">Friends Invited: 25 / Friends of Friends Joined: 125 </p>
+                  <p class="invited">Friends Invited: {{this.$store.state.inviteStatistics.primary}} / Friends of Friends Joined: {{this.$store.state.inviteStatistics.secondary}}  </p>
               </div>
           </div>
           <div class="clear-fix"></div>
-          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;font-size:2rem">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
           <p class="text-center" style="margin: 3vh 0;">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
           <div class="des">
@@ -30,7 +30,7 @@
           </div>
       </div>
       <div class="container" v-else>
-          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;font-size:2rem">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
           <p class="text-center" style="margin: 3vh 0;">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
           <div class="des">
