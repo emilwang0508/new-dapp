@@ -2,7 +2,8 @@
 <div class="sign-panel ">
   <div class="container">
     <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
-    <p class="des text-shadow">AAA Space Domination MMO on Ethereum Blockchain</p>
+    <p class="des text-shadow">AAA Space Domination MMO on the Ethereum Blockchain</p>
+    <img src="/static/img/intro.png" alt="intro" class="intro-img" style="width: 100%;max-width: 600px">
     <div class="form-panel">
       <i><img src="/static/img/form-corner.png" alt=""></i>
       <i><img src="/static/img/form-corner.png" alt=""></i>
@@ -15,14 +16,14 @@
       <div class="input-group">
       <label for="email" >Email</label>
         <div class="verify-code-panel">
-          <input type="email" v-model="email" name="email" v-validate="'required|email'" placeholder="Enter your email">
+          <input type="email" v-model="email" name="email" v-validate="'required|email'" placeholder="Enter your email" id="email">
           <button class="send-button special" :disabled="this.isDisabled" @click="getCode">{{this.buttonMsg}}</button>
           <p  v-show="errors.has('email')" class="error">{{ errors.first('email') }}</p>
         </div>
       </div>
       <div class="input-group">
-        <label for="code">Email Verify code</label>
-            <input type="text" v-model="verifyCode" placeholder="Enter verification code" v-validate="'required|alpha_num'" name="verifyCode">
+        <label for="verifyCode">Email Verify code</label>
+            <input type="text" v-model="verifyCode" placeholder="Enter verification code" v-validate="'required|alpha_num'" name="verifyCode" id="verifyCode">
             <p  v-show="errors.has('verifyCode')" class="error">{{ errors.first('verifyCode') }}</p>
       </div>
       <div class="input-group">
@@ -36,7 +37,7 @@
       </div>
 
       <div class="input-group verifyCode">
-      <label for="verifyCode">Verification Code</label>
+      <label for="verifyCode">Show us you are human</label>
         <Verify :type="3" :barSize="{width:'100%',height:'40px'}"  explain="slide to right" @success="verify('success')"  @error="verify('error')"></Verify>
       </div>
       <div class="h50"></div>
@@ -68,6 +69,7 @@ export default {
       buttonMsg:'Send',
       timer: null,
       count: 0,
+      showIntro: false
     }
   },
   components:{
@@ -101,7 +103,6 @@ export default {
 
             this.$store.dispatch('signUp',form )
               .then(res=>{
-                console.log(res.msg.session)
                 _this.getUserInfo(res.msg.session)
 
               })
@@ -124,12 +125,14 @@ export default {
       this.$store.dispatch('getUserInfo',session)
         .then((res)=>{
           _this.$router.push('/')
+          document.documentElement.scrollTop  = 0
+          window.pageYOffset  = 0
+          document.body.scrollTop  = 0
         }).catch((error)=>{
 
       })
     },
     getCode(ele){
-      console.log(this.$el)
       let _this = this
       let action = 'verifyEmail'
       let source = _this.email
@@ -173,6 +176,8 @@ export default {
     }
   },
   created(){
+    (this.$route.params.code)?this.showIntro = true: true
+
     if(this.$store.state.logined === true){
       this.$router.push('/')
     }

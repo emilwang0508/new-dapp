@@ -10,34 +10,39 @@
               </div>
           </div>
           <div class="clear-fix"></div>
-          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;font-size:2rem">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
-          <p class="text-center" style="margin: 3vh 0;">Your friends and you earn tokens together.<br/>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;font-size:2rem">Invite your friends to <br/>earn free ETH and DCVT</p>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 20px">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
-          <div class="des">
-              <img src="/static/img/invite-des.png" alt="">
-          </div>
-          <p class="text-center" style="margin: 2vh 0;">Join our Discord channel for occasional DCVT airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
-          <img src="/static/img/spaceship.png" alt="spaceship" class="img100">
+
+
+
           <div class="code-panel">
               <p>My Invitation Code</p>
               <div class="">
-                  {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
+                  {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='"I am playing Decentraverse and earning free tokens everyday. Join me and let us earn tokens together! My invite code is\: " +this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
               <p>Play Decentraverse using this link</p>
-              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
-              <p class="tips">Share a screenshot of this screen to earn lots of DCVT!
-              </p>
+              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'You can use this link to join: '+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
+
+
           </div>
+          <div class="div" style="height: 7rem;margin: 5vh 0;">
+              <div class="qrcode"></div>
+              <img src="/static/img/spaceship.png" alt="spaceship" class="spaceship">
+          </div>
+          <div class="clear-fix"></div>
+          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
+          <p class="tips">Share a screenshot of this screen to earn lots of DCVT!</p>
       </div>
       <div class="container" v-else>
-          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;font-size:2rem">Play Decentraverse<br/> Earn FREE ETH and DCVT </p>
-          <p class="text-center" style="margin: 3vh 0;">Your friends and you earn tokens together.<br/>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;font-size:2rem">
+              Invite your friends to earn free ETH and DCVT
+              <!--Play Decentraverse<br/> Earn FREE ETH and DCVT -->
+          </p>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 20px">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
-          <div class="des">
-              <img src="/static/img/invite-des.png" alt="">
-          </div>
-          <p class="text-center" style="margin: 2vh 0;">Join our Discord channel for occasional DCVT airdrops: <a href="">discord.gg/McpaHrq</a></p>
-          <img src="/static/img/spaceship.png" alt="spaceship" class="img100">
+          <img src="/static/img/spaceship.png" alt="spaceship" class="img100" style="margin: 5vh 0;">
+          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
       </div>
   </div>
 </template>
@@ -62,7 +67,6 @@
       },
       methods:{
         copyContent(dom){
-          console.log(dom)
             let clipboard = new Clipboard(dom)
           clipboard.on('success', e => {
             MessageBox.alert('',{message: 'Copy it successfully and share it with your friends!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{

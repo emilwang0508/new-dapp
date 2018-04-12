@@ -27,7 +27,10 @@ export default {
   methods:{
     goInvite:function (selector) {
       let anchor = document.body.querySelector(selector)
-      document.documentElement.scrollTop = anchor.offsetTop
+      let top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+      document.documentElement.scrollTop  = anchor.offsetTop
+      window.pageYOffset  = anchor.offsetTop
+      document.body.scrollTop  = anchor.offsetTop
     }
   }
 }

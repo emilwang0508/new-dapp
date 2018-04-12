@@ -151,7 +151,6 @@ p.text-shadow{
     padding: 20px;
     position: relative;
     box-shadow: 0 0 20px #7594cf;
-    position: relative;
     >i{
 	    display: block;
 	    position: absolute;
@@ -210,12 +209,13 @@ p.text-shadow{
       padding: 0 10px;
       font-size: 16px;
       border-radius: 5px;
+      -webkit-appearance: none;
     }
     .submit{
       background-image: url(/static/img/submit-btn.png);
       position: absolute;
-      width: 14rem;
-      height: 4rem;
+      width: 17rem;
+      height: 5rem;
       right: -16px;
       bottom: -16px;
       background-size: cover;
@@ -226,7 +226,7 @@ p.text-shadow{
       color: #fff;
       font-size: 1.5rem;
       text-indent: 1.5rem;
-      line-height: 4.5rem;
+      line-height: 5.5rem;
     }
   }
 
@@ -388,6 +388,15 @@ p.special{
   min-height: 100vh;
   background-image: url(/static/img/invite-bg.jpg);
   background-size: cover;
+  .qrcode{
+    height: 7rem;
+    width: 7rem;
+    float: left;
+  }
+  .spaceship{
+    height: 7rem;
+    float: right;
+  }
   .user-center{
     margin-top: 30px;
     img{
@@ -420,17 +429,14 @@ p.special{
     object-fit: cover;
   }
   .code-panel{
-    margin: 3vh auto;
+    margin: 5vh auto;
     max-width: 600px;
     >p{
       font-family: 'special';
       margin-bottom: 5px;
+      font-size: 1.5rem;
     }
-    .tips{
-      font-family: "Microsoft YaHei UI";
-      font-size: 0.9rem;
-      color: #949494;
-    }
+
     >div{
 
       position: relative;
@@ -456,6 +462,11 @@ p.special{
         top: 0;
       }
     }
+  }
+  .tips{
+    font-family: "Microsoft YaHei UI";
+    font-size: 0.9rem;
+    color: #949494;
   }
 }
 

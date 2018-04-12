@@ -8,7 +8,7 @@
         </div>
         <div class="h50"></div>
         <div class="clear-fix"></div>
-        <p class="des">The Galactic Constructon Corporation provides bountiful funds to bankroll your invasion efforts. Choose your supply crate now to claim your funding.</p>
+        <p class="des">The Galactic Constructon Corporation provides bountiful funds to bankroll your invasion efforts. Choose your supply crate above to claim your funding.</p>
 
     </div>
 </template>
@@ -65,11 +65,20 @@
                       _this.lottery.selected.splice(e)
                     })
                 }else {
-                  MessageBox.alert('',{message: 'Today\'s lucky draw runs out. Please try again tomorrow!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{})
+                  MessageBox.alert('',{message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',title: 'Tips',confirmButtonText: 'Invite'}).then(action=>{
+                    _this.goInvite('#invite')
+                  })
                 }
               }
             }
 
+          },
+          goInvite:function (selector) {
+            let anchor = document.body.querySelector(selector)
+            let top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+            document.documentElement.scrollTop  = anchor.offsetTop
+            window.pageYOffset  = anchor.offsetTop
+            document.body.scrollTop  = anchor.offsetTop
           }
         }
     }

@@ -3,7 +3,7 @@
         <div class="close-btn" @click="handleClose"></div>
         <div class="container">
             <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
-            <p class="des text-shadow">AAA Space Domination MMO on Ethereum Blockchain</p>
+            <p class="des text-shadow">AAA Space Domination MMO on the Ethereum Blockchain</p>
             <img src="/static/img/intro.png" alt="intro" class="intro-img">
             <a href="https://youtu.be/8SlrUund6Rc" class="video-link  link" target="_blank"><p class="text-shadow special">Video</p></a>
             <a href="#" class="coming-link link"><p class="text-shadow special">COMING SOON</p></a>

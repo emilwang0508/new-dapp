@@ -30,7 +30,6 @@ const actions = {
 
     return new Promise((resolve, reject)=>{
       api.signUpAction(form).then(response => {
-        console.log(response)
         if(response.code==200){
           commit(types.SET_SESSION, response.msg.session)
         }
