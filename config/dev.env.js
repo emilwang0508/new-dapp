@@ -6,5 +6,5 @@ module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   BASE_API: '"//testv2.decentraverse.io"',
   BASE_HOST:'"api"',
-  BASE_DOMAIN: `"www\.decentraverse\.io"`,
+  BASE_DOMAIN: `"testv2\.decentraverse\.io"`,
 })
