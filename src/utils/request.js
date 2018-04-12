@@ -53,7 +53,6 @@ service.interceptors.response.use(
     //const res = response;
     if (res.code !== '200' && res.code !== 200) {
       let code = res.code
-      // Toast('11111111111111111111')
       switch (code){
         case 100:
           Toast('missing parameter!!!')
@@ -83,12 +82,14 @@ service.interceptors.response.use(
           Toast('wrong password!!!')
           break;
         case 505:
-          Toast('session error!!!')
+          localStore.set('session')
+          location.reload();
           break;
         default:
           Toast('error')
           break;
       }
+
       return Promise.reject('error')
     } else {
       return response.data

@@ -34,15 +34,11 @@ export default {
   created(){
     this.isLogin = this.$store.state.logined
     let session = localStore.get('session')
-    if ((typeof session)===undefined||session===undefined||session==='undefined'){
-        return false
-    }
-    if (session === null||session === 'null'||session === ''){
-      return false
-    }
 
+    let _this = this
+    if (session!==undefined) {
     axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
-      if (res.status==200){
+      if (res.status===200&&res.data.code==200){
         let csrf_token = res.data.msg
         window.axios.defaults.headers.common['csrf-token'] = csrf_token;
         window.axios.defaults.headers.common['_csrf'] = csrf_token;
@@ -50,13 +46,20 @@ export default {
         window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
         window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
         window.axios.defaults.headers.common['credentials'] = 'same-origin';
-        this.$store.dispatch('inviteStatistics', session)
-        this.$store.dispatch('getUserInfo', session)
-        this.$store.commit('SET_SESSION',session)
+
+          _this.$store.dispatch('inviteStatistics', session)
+          _this.$store.dispatch('getUserInfo', session)
+          _this.$store.commit('SET_SESSION',session)
+        
+
+        
       }
+
     }).catch((error)=>{
 
     })
+    }
+
 
 
 

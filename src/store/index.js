@@ -8,7 +8,15 @@ Vue.use(Vuex)
 const state = {
   count: 0,
   logined: false,
-  userInfo: null,
+  userInfo: {
+    name: '',
+    email:'',
+    deposit: 0,
+    id: null,
+    invite_code:'',
+    playtimes: 0,
+    addresss: '',
+  },
   remainingLotteryTimes: 3,
   lottery:{
     times: 3,

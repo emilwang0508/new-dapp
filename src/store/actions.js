@@ -60,18 +60,24 @@ const actions = {
           commit(types.LOGIN)
         }
         resolve(response); }).catch(error =>
-      { reject(error) })
+        { 
+          localStore.set('session')
+          reject(error) 
+        })
     })
   },
   inviteStatistics({commit}, session){
     return new Promise((resolve, reject)=>{
       api.inviteStatistics(session).then(response => {
         if(response.code==200){
-          commit(types.SET_USER_INFO, response.msg)
+          commit(types.SET_INVITE_STATISTICS, response.msg)
           commit(types.LOGIN)
         }
         resolve(response); }).catch(error =>
-      { reject(error) })
+        { 
+          localStore.set('session')
+          reject(error) 
+        })
     })
   }
 }

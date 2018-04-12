@@ -34,7 +34,7 @@
       <div class="h50"></div>
       <button class="submit" v-on:click="handleSumit">Submit</button>
     </div>
-    <p class="text-center text-shadow">I already have an account, please <a href="/#/sign-in">login</a></p>
+    <p class="text-center text-shadow" style="margin:2rem 0">I already have an account, please <a href="/#/sign-in" style="text-decoration: underline;">login</a></p>
     <div class="h50"></div>
   </div>
 </div>
@@ -112,6 +112,11 @@ export default {
         }).catch((error)=>{
 
       })
+    }
+  },
+  created(){
+    if(this.$store.state.logined === true){
+      this.$router.push('/')
     }
   }
 }

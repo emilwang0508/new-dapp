@@ -22,7 +22,7 @@
         <div class="h50"></div>
         <button class="submit"  v-on:click="login">Submit</button>
       </div>
-      <p class="text-center text-shadow">if you don't have an account, please <a href="/#/sign-up">register</a></p>
+      <p class="text-center text-shadow" style="margin:2rem 0">if you don't have an account, please <a href="/#/sign-up" style="text-decoration: underline;">register</a></p>
 
     </div>
   </div>
@@ -56,15 +56,6 @@ export default {
 
             })
           }
-/*          let data = {
-            name: this.name,
-            password: this.password
-          }
-          axios('http://testv2.decentraverse.io/api/user/login',{
-            method: "post",
-            data: data,
-            withCredentials:true
-          })*/
         })
 
       }
@@ -77,6 +68,11 @@ export default {
         }).catch((error)=>{
         Toast(error)
       })
+    }
+  },
+  created(){
+    if(this.$store.state.logined === true){
+      this.$router.push('/')
     }
   }
 }

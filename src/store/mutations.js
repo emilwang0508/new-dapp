@@ -10,7 +10,7 @@ const mutations = {
   [types.LOGOUT](state){
     state.logined = false
     state.session = null
-    localStore.set('session', null) 
+    localStore.set('session') 
   },
   [types.SET_SESSION](state,data){
     state.session = data
