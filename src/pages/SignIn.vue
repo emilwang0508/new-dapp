@@ -22,7 +22,7 @@
         <div class="h50"></div>
         <button class="submit"  v-on:click="login">Submit</button>
       </div>
-      <p class="text-center text-shadow" style="margin:2rem 0">if you don't have an account, please <a href="/#/sign-up" style="text-decoration: underline;">register</a></p>
+      <p class="text-center text-shadow" style="margin:2rem 0;font-size:1.5rem">if you don't have an account, please <a href="/#/sign-up" style="text-decoration: underline;">register</a></p>
 
     </div>
   </div>

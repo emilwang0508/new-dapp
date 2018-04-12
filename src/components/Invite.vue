@@ -5,7 +5,7 @@
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
                   <p class="name">{{this.$store.state.userInfo.name}}</p>
-                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (=1259.6 USD) </p>
+                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (={{this.$store.state.userInfo.deposit*10}} USD) </p>
                   <p class="invited">Friends Invited: {{this.$store.state.inviteStatistics.primary}} / Friends of Friends Joined: {{this.$store.state.inviteStatistics.secondary}}  </p>
               </div>
           </div>

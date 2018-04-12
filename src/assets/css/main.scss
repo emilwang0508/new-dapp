@@ -25,14 +25,18 @@ a {
     &:link,&:visited, &:active{color: inherit;}
     &:hover, &:focus {color:inherit; text-decoration:none;outline:none;}
 }
-
+div{
+    font-size: 1.4rem;
+}
 //清理浮动
 .cf{
     zoom:1;
     &:before,&:after {content:"";display:table;}
     &:after {clear:both;}
 }
-
+p{
+  font-size: 1.4rem
+}
 
 // 链接动画
 @mixin dz($time:0.25s){
@@ -415,7 +419,7 @@ p.special{
       border-image-width: 0px;
       line-height: 50px;
       text-indent: 8%;
-      font-size: 1.0rem;
+      font-size: 1.5rem;
       margin-bottom: 15px;
       p{
         width: 70%;
@@ -545,7 +549,7 @@ header.header{
     img.intro-img{
       width: 100%;
       object-fit: cover;
-      margin: 10vh 0;
+      margin: 5vh 0;
     }
     .link{
       text-align: center;
