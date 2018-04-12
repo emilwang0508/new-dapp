@@ -19,6 +19,7 @@
     "js-cookies": "^1.0.4",
     "mint-ui": "^2.2.13",
     "nprogress": "^0.2.0",
+    "qrcodejs2": "0.0.2",
     "store": "^2.0.12",
     "vee-validate": "^2.0.6",
     "vue": "^2.5.2",

@@ -388,10 +388,14 @@ p.special{
   min-height: 100vh;
   background-image: url(/static/img/invite-bg.jpg);
   background-size: cover;
-  .qrcode{
+  .qrcode,#qrcode{
     height: 7rem;
     width: 7rem;
     float: left;
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
   }
   .spaceship{
     height: 7rem;

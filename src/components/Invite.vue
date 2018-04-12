@@ -27,7 +27,7 @@
 
           </div>
           <div class="div" style="height: 7rem;margin: 5vh 0;">
-              <div class="qrcode"></div>
+              <div class="qrcode" id="qrcode"></div>
               <img src="/static/img/spaceship.png" alt="spaceship" class="spaceship">
           </div>
           <div class="clear-fix"></div>
@@ -52,6 +52,7 @@
     import { MessageBox } from 'mint-ui'
     import { FloatMul } from '../common'
     import { mapGetters } from 'vuex'
+    import QRCode from 'qrcodejs2'
     export default {
       name: 'Invite',
       data () {
@@ -60,10 +61,46 @@
           invite_code: null,
           invite_link: '',
           isLogin: this.$store.state.logined,
+          i:false
         }
       },
       computed: {
-        ...mapGetters(['money'])
+        ...mapGetters(['money','logined'])
+      },
+      mounted() {
+        console.log(this.$store.state.logined)
+        if(this.$store.state.logined==true){
+          console.log('asdsa')
+          let qrcodeNode = 'test'
+          let qrcode = new QRCode(qrcodeNode, {
+            text:'this.BASE_DOMAIN+\'/#/sign-up/\'+this.$store.state.userInfo.invite_code',
+            width: 180,
+            height: 180,
+            colorDark: "#000000",
+            colorLight: "#ffffff"
+          });
+          console.log(qrcode)
+        }
+      },
+      watch:{
+        logined(newVal,oldVal){
+          this.$nextTick(function () {
+            let qrcodeNode = 'qrcode'
+            let qrcode = new QRCode(qrcodeNode, {
+              text:'http://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code,
+              width: 180,
+              height: 180,
+              colorDark: "#000000",
+              colorLight: "#ffffff"
+            });
+          })
+
+        }
+      },
+      created(){
+        if(this.$store.state.logined==true){
+          console.log('asdsa')
+        }
       },
       methods:{
         copyContent(dom){
@@ -83,7 +120,7 @@
             // 释放内存
             clipboard.destroy()
           })
-        }
+        },
       },
     }
 </script>
