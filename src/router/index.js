@@ -28,6 +28,11 @@ export default new Router({
             path: '/intro',
             name: 'Intro',
             component: Intro
+        },
+        {
+            path: '/sign-up/:code',
+            name: 'SignUp',
+            component: SignUp
         }
     ]
 })

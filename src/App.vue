@@ -15,9 +15,12 @@ export default {
   body{
     margin: 0;
     padding: 0;
+  font-size: 62.5%;
+  background-color: #000;
+  color: #ffffff;
   }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffff;

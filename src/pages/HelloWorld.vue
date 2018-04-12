@@ -33,7 +33,7 @@ export default {
   },
   created(){
     this.isLogin = this.$store.state.logined
-    let session = localStore.get('session')
+    let session = locale.get('session')
 
     let _this = this
     if (session!==undefined) {

@@ -61,7 +61,7 @@ const actions = {
         }
         resolve(response); }).catch(error =>
         { 
-          localStore.set('session')
+          locale.set('session')
           reject(error) 
         })
     })
@@ -75,8 +75,21 @@ const actions = {
         }
         resolve(response); }).catch(error =>
         { 
-          localStore.set('session')
+          locale.set('session')
           reject(error) 
+        })
+    })
+  },
+  getCode({commit}, e){
+    return new Promise((resolve, reject)=>{
+      api.getCodeAction(e.action, e.source).then(response => {
+        if(response.code==200){
+
+        }
+        resolve(response); })
+        .catch(error =>
+        {
+
         })
     })
   }

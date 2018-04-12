@@ -175,6 +175,27 @@ p.text-shadow{
     .error{
       color: #f96969;
     }
+    .verify-code-panel{
+      position: relative;
+      .send-button{
+        position: absolute;
+        width: 20vw;
+        height: 3rem;
+        top: 0;
+        right: -2px;
+        border: 1px solid transparent;
+        font-family: 'special';
+        background-color: #264091;
+        border-radius: 3px;
+        font-size: 1.5rem;
+        color: #fff;
+      }
+      .send-button:disabled,.send-button.disabled{
+        background-color: #eeeeee;
+        color: #000000;
+        cursor: not-allowed;
+      }
+    }
   }
     label{
       font-size: 1.4rem;
@@ -387,9 +408,11 @@ p.special{
     }
   }
   .des{
+    text-align: center;
     img{
       object-fit: cover;
       width: 100%;
+      max-width: 600px;
     }
   }
   .img100{
@@ -451,7 +474,7 @@ p.special{
   }
   .title{
     font-size: 3rem;
-    margin-top: 26%;
+    margin-top: 13vh;
   }
   .panel{
 

@@ -26,9 +26,10 @@ Vue.use(VeeValidate)
 // Vue.use(Message);
 Vue.use(Toast);
 Vue.use(MessageBox);*/
-
-Vue.prototype.BASE_DOMAIN = 'http://127.0.0.1'
-window.localStore = require('store')
+// let aaa = process.env.BASE_DOMAIN
+// console.log(aaa)
+Vue.prototype.BASE_DOMAIN = process.env.BASE_DOMAIN
+window.locale = require('store')
 
 /* eslint-disable no-new */
 new Vue({

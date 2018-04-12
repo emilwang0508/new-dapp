@@ -10,11 +10,11 @@ const mutations = {
   [types.LOGOUT](state){
     state.logined = false
     state.session = null
-    localStore.set('session') 
+    locale.set('session')
   },
   [types.SET_SESSION](state,data){
     state.session = data
-    localStore.set('session', data)
+    locale.set('session', data)
   },
   [types.ADD_OVERAGE](state,num){
     state.userInfo.deposit = common.FloatAdd(state.userInfo.deposit, num)

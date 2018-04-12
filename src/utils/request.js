@@ -69,6 +69,9 @@ service.interceptors.response.use(
         case 404:
           Toast('unknow error!!!')
           break;
+        case 500:
+          Toast('error!!!')
+          break;
         case 501:
           Toast('error invite code!!!')
           break;
@@ -82,8 +85,11 @@ service.interceptors.response.use(
           Toast('wrong password!!!')
           break;
         case 505:
-          localStore.set('session')
+          locale.set('session')
           location.reload();
+          break;
+        case 506:
+          Toast('verify code error!!!')
           break;
         default:
           Toast('error')
@@ -96,7 +102,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-    Toast(error)
+    if(error)
     return Promise.reject(error)
   }
 )

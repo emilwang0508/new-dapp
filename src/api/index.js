@@ -13,13 +13,7 @@ export function signUpAction(form){
   return request({
     url: '/api/user/register',
     method: 'post',
-    data: {
-      name:form.name,
-      email:form.email,
-      password: form.password,
-      invite_code: form.invite_code,
-      addresss: form.address
-    }
+    data:form
   })
 }
 export function lotteryAction(form){
@@ -47,6 +41,16 @@ export function inviteStatistics(session){
     method: 'post',
     data: {
       session: session
+    }
+  })
+}
+export function getCodeAction(action,source){
+  return request({
+    url: '/api/common',
+    method: 'post',
+    data: {
+      action: action,
+      source: source
     }
   })
 }
