@@ -58,14 +58,14 @@ export default {
   data () {
     return {
       name:'',
-      isDisabled: false,
+      isDisabled: true,
       msg: '',
       email: '',
       password: '',
       code: this.$route.params.code,
       verifyCode: '',
       isSend: false,
-      buttonMsg:'Get Code',
+      buttonMsg:'Send',
       timer: null,
       count: 0,
     }
@@ -151,7 +151,7 @@ export default {
                 //更改内容
               } else {
                 //更改内容
-                this.buttonMsg = 'Get Code'
+                this.buttonMsg = 'Send'
                 clearInterval(this.timer);
                 this.timer = null;
                 this.isDisabled = false

@@ -5,7 +5,7 @@
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
                   <p class="name">{{this.$store.state.userInfo.name}}</p>
-                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (={{this.$store.state.userInfo.deposit*10}} USD) </p>
+                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (={{this.money}} USD) </p>
                   <p class="invited">Friends Invited: {{this.$store.state.inviteStatistics.primary}} / Friends of Friends Joined: {{this.$store.state.inviteStatistics.secondary}}  </p>
               </div>
           </div>
@@ -45,6 +45,8 @@
 <script>
     import Clipboard from 'clipboard';
     import { MessageBox } from 'mint-ui'
+    import { FloatMul } from '../common'
+    import { mapGetters } from 'vuex'
     export default {
       name: 'Invite',
       data () {
@@ -52,8 +54,11 @@
           msg: 'Welcome to Invite',
           invite_code: null,
           invite_link: '',
-          isLogin: this.$store.state.logined
+          isLogin: this.$store.state.logined,
         }
+      },
+      computed: {
+        ...mapGetters(['money'])
       },
       methods:{
         copyContent(dom){
@@ -75,7 +80,7 @@
             clipboard.destroy()
           })
         }
-      }
+      },
     }
 </script>
 

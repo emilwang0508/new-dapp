@@ -60,17 +60,39 @@
                       _this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
                     })
                     .catch((error)=>{
-                        if(error)
-                      _this.lottery.times++
-                      _this.lottery.selected.splice(e)
+
                     })
                 }else {
                   MessageBox.alert('',{message: 'Today\'s lucky draw runs out. Please try again tomorrow!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{})
                 }
               }
+/*              if(this.lottery.selected.indexOf(e)<0){
+                if (this.lottery.times===0){
+                  MessageBox.alert('',{message: 'Today\'s lucky draw runs out. Please try again tomorrow!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
+                  })
+
+                }
+                else{
+                  let data = {
+                    id: e.toString(),
+                    session: session
+                  }
+                  this.$store.dispatch('lottery',data)
+                    .then((res)=>{
+                      _this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
+                    })
+                    .catch((error)=>{
+
+                    })
+                }
+              }else{
+                return false
+              }*/
+
             }
 
           }
+
         }
     }
 </script>
