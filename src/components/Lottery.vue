@@ -41,8 +41,8 @@
             let _this = this
 
             if (session==null||session==''){
-              MessageBox.alert('',{message: 'Need to login to complete this action!',title: 'Tips',confirmButtonText: 'Log In'}).then(action=>{
-                this.$router.push('/sign-in')
+              MessageBox.alert('',{message: 'Need to sign to complete this action!',title: 'Tips',confirmButtonText: 'Sign'}).then(action=>{
+                this.$router.push('/sign-up')
               })
             }else {
               if(this.lottery.selected.indexOf(e)<0){
