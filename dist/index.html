@@ -1,1 +1,33 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Decentraverse</title><link rel=stylesheet href=https://unpkg.com/mint-ui/lib/style.css><link rel="shortcut icon" type=image/x-icon href=./favicon.ico rel="external nofollow"><link href=/static/css/app.1f3e1bb1f3581466fedaf90f3c100779.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.deb6941ce4a2fa3f60d9.js></script><script type=text/javascript src=/static/js/app.f6d1e450295e0cd2c5eb.js></script></body></html>
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Decentraverse</title><link rel=stylesheet href=https://unpkg.com/mint-ui/lib/style.css><link rel="shortcut icon" type=image/x-icon href=./favicon.ico rel="external nofollow"><link href=/static/css/app.019791917e8e27110f2ba922c3eff7d4.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.deb6941ce4a2fa3f60d9.js></script><script type=text/javascript src=/static/js/app.fa351d7a69b054b65b6e.js></script></body><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/xzf7l165';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script><script type=text/javascript>window.Intercom("boot", {
+      app_id: "xzf7l165",
+      alignment: 'left',
+      hide_default_launcher: true
+    });
+    Intercom("hide");
+    window.intercomSettings = {
+      app_id: 'xzf7l165',
+      alignment: 'left',
+      horizontal_padding: 20,
+      vertical_padding: 20,
+      hide_default_launcher:false
+    };
+    window.Intercom("update");
+
+    window.onscroll = function(){
+      var top = document.documentElement.scrollTop || document.body.scrollTop;
+      var _iframe = document.getElementsByName('intercom-launcher-frame')
+      var _iframe2 = document.getElementsByName('intercom-launcher-badge-frame')
+      var chat = document.getElementsByClassName('intercom-chat')
+      if(_iframe[0]!==undefined||_iframe2[0]!==undefined){
+        if( top >= 1000 ) {
+          _iframe[0].style.display = "none"
+          _iframe2[0].style.display = "none"
+          chat[0].style.display = "none"
+        } else {
+          _iframe[0].style.display = "block"
+          _iframe2[0].style.display = "none"
+          chat[0].style.display = "none"
+        }
+      }
+
+    }</script></html>

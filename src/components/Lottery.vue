@@ -41,7 +41,7 @@
             let _this = this
 
             if (session==null||session==''){
-              MessageBox.alert('',{message: 'Need to sign to complete this action!',title: 'Tips',confirmButtonText: 'Sign'}).then(action=>{
+              MessageBox.alert('',{message: 'Please register or login to play.',title: 'Tips',confirmButtonText: 'Register'}).then(action=>{
                 this.$router.push('/sign-up')
               })
             }else {

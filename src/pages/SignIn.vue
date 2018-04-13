@@ -9,13 +9,13 @@
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <div class="input-group">
           <label for="account" >Account</label>
-          <input type="account" v-model="account" id="email" name="account" v-validate="'required|account|min:4|max:30'" >
+          <input type="account" v-model="account" id="email" name="account" v-validate="'required|account|min:4|max:30'" placeholder="Enter your email or name">
           <p  v-show="errors.has('account')" class="error">{{ errors.first('account') }}</p>
 
         </div>
         <div class="input-group">
           <label for="password" >Password</label>
-          <input type="password" v-model="password" id="password" name="password" v-validate="'required|min:6|max:30'">
+          <input type="password" v-model="password" id="password" name="password" v-validate="'required|min:6|max:30'"  placeholder="Enter your password">
           <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
 
         </div>
@@ -78,6 +78,9 @@ export default {
     if(this.$store.state.logined === true){
       this.$router.push('/')
     }
+  },
+  mounted(){
+    var _iframe = document.getElementsByName('intercom-launcher-frame')
   }
 }
 </script>

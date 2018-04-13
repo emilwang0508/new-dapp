@@ -22,7 +22,7 @@
                   {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='"I am playing Decentraverse and earning free tokens everyday. Join me and let us earn tokens together! My invite code is\: " +this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
               <p>Play Decentraverse using this link</p>
-              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'. You can use this link to join: '+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
+              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'. You can use this link to join: '+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
 
 
           </div>
@@ -69,9 +69,6 @@
       },
       watch:{
         logined(newVal,oldVal){
-
-
-
           if (newVal!==false){
             this.$nextTick(function () {
                 let qrcodeNode = 'qrcode'
@@ -82,8 +79,6 @@
                   colorDark: "#000000",
                   colorLight: "#ffffff"
                 });
-                console.log(qrcode._oDrawing)
-                console.log(qrcode._oDrawing._elImage.currentSrc)
               })
           }
           return newVal
