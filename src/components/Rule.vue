@@ -1,6 +1,6 @@
 <template>
 <div class="rule">
-    <div class="container" style="max-width: 600px">
+    <div class="container" style="max-width: 600px;position: relative;height: inherit;">
         <img :src=imgSrc alt="star" class="star">
 
         <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>

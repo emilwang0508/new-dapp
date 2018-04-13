@@ -3,6 +3,7 @@ import * as types from './mutation-types'
 const mutations = {
   [types.SET_USER_INFO](state, data){
     state.userInfo = data
+    state.lottery.times = data.playtimes
   },
   [types.LOGIN](state){
     state.logined = true

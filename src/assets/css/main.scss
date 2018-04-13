@@ -28,6 +28,9 @@ a {
 div{
     font-size: 1.4rem;
 }
+.h30{
+  height: 30px;
+}
 //清理浮动
 .cf{
     zoom:1;
@@ -491,16 +494,17 @@ p.special{
   min-height: 600px;
   border: 1px solid transparent;
   .star{
-    width: 150px;
+    width: 17rem;
     position: absolute;
-    top: -45px;
+    top: -4.5rem;
+    left: -5%;
   }
   .title{
     font-size: 3rem;
     margin-top: 13vh;
   }
   .panel{
-
+    z-index: 2;
     margin: 2vh auto;
     position: relative;
     max-width: 600px;
@@ -523,10 +527,11 @@ p.special{
     }
   }
   .ship{
-    width: 222px;
+    width: 30rem;
     position: absolute;
     right: 0;
-    bottom: -85px;
+    bottom: -75px;
+    z-index: 1;
   }
 }
 

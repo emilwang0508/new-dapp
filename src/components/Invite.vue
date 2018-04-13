@@ -11,7 +11,7 @@
           </div>
           <div class="clear-fix"></div>
           <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;font-size:2rem">Invite your friends to <br/>earn free ETH and DCVT</p>
-          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 20px">Your friends and you earn tokens together.<br/>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
 
 
@@ -26,7 +26,7 @@
 
 
           </div>
-          <div class="div" style="height: 7rem;margin: 5vh 0;">
+          <div class="div" style="height: 9rem;margin: 5vh 0;">
               <div class="qrcode" id="qrcode"></div>
               <img src="/static/img/spaceship.png" alt="spaceship" class="spaceship">
           </div>
@@ -39,7 +39,7 @@
               Invite your friends to earn free ETH and DCVT
               <!--Play Decentraverse<br/> Earn FREE ETH and DCVT -->
           </p>
-          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 20px">Your friends and you earn tokens together.<br/>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
           <img src="/static/img/spaceship.png" alt="spaceship" class="img100" style="margin: 5vh 0;">
           <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>

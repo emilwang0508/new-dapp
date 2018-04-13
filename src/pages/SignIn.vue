@@ -19,7 +19,7 @@
           <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
 
         </div>
-        <div class="h50"></div>
+        <div class="h30"></div>
         <button class="submit"  v-on:click="login">Submit</button>
       </div>
       <p class="text-center text-shadow" style="margin:2rem 0;font-size:1.5rem">if you don't have an account, please <a href="/#/sign-up" style="text-decoration: underline;">register</a></p>

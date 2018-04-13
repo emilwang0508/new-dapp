@@ -40,7 +40,7 @@
       <label for="verifyCode">Show us you are human</label>
         <Verify :type="3" :barSize="{width:'100%',height:'40px'}"  explain="slide to right" @success="verify('success')"  @error="verify('error')"></Verify>
       </div>
-      <div class="h50"></div>
+      <div class="h30"></div>
       <button class="submit" v-on:click="handleSumit">Submit</button>
     </div>
     <p class="text-center text-shadow" style="margin:2rem 0;font-size:1.5rem">I already have an account, please <a href="/#/sign-in" style="text-decoration: underline;">login</a></p>

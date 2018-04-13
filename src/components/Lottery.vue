@@ -2,7 +2,7 @@
 
     <div class="lottery container">
         <p class="title text-center text-shadow special">Supply Depot</p>
-        <p class="text-shadow text-center">You have<span> {{this.$store.state.lottery.times}} </span> chances left today</p>
+        <p class="text-shadow text-center" style="margin-bottom: 2rem;">You have<span> {{this.$store.state.lottery.times}} </span> chances left today</p>
         <div class="lottery-panel" >
             <div  v-for="(item, index) in items" class="col-xs-4" v-on:click="handleLottery(index)" v-html="item.content"  ></div>
         </div>
@@ -15,6 +15,7 @@
 
 <script>
     import { MessageBox } from 'mint-ui'
+    import { mapGetters } from 'vuex'
     export default {
         name: 'lottery',
         data () {
@@ -31,10 +32,7 @@
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
                   {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
                 ],
-              lottery:{
-                  times: 3,
-                  selected: []
-              }
+
             }
         },
         methods:{
@@ -49,8 +47,6 @@
             }else {
               if(this.lottery.selected.indexOf(e)<0){
                 if(this.lottery.times>0){
-                  _this.lottery.times--
-                  _this.lottery.selected.push(e)
                   let data = {
                     id: e.toString(),
                     session: session
@@ -61,8 +57,7 @@
                     })
                     .catch((error)=>{
                         if(error)
-                      _this.lottery.times++
-                      _this.lottery.selected.splice(e)
+                          console.log(error)
                     })
                 }else {
                   MessageBox.alert('',{message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',title: 'Tips',confirmButtonText: 'Invite'}).then(action=>{
@@ -80,7 +75,11 @@
             window.pageYOffset  = anchor.offsetTop
             document.body.scrollTop  = anchor.offsetTop
           }
+        },
+        computed: {
+          ...mapGetters(['lottery'])
         }
+
     }
 </script>
 

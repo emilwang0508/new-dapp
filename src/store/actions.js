@@ -36,20 +36,24 @@ const actions = {
         resolve(response); }).catch(error => { reject(error) })
     })
   },
-  lottery({commit}, data) {
+  lottery({commit,state}, data) {
+    if(state.lottery.selected.indexOf(data.id)<0){
+      return new Promise((resolve, reject)=>{
+        api.lotteryAction(data).then(response => {
+          if(response.code==200){
+            commit(types.ADD_OVERAGE, response.msg.bonus)
+            commit(types.LOTTERY, data.id)
+          }
+          resolve(response); }).catch(error =>
+        {
+          reject(error)
 
-    return new Promise((resolve, reject)=>{
-      api.lotteryAction(data).then(response => {
-        if(response.code==200){
-          commit(types.ADD_OVERAGE, response.msg.bonus)
-          commit(types.LOTTERY, data.id)
-        }
-        resolve(response); }).catch(error =>
-      {
-        reject(error)
-
+        })
       })
-    })
+    }else{
+      return 'Repeat operation';
+    }
+
   },
   getUserInfo({commit}, session) {
     return new Promise((resolve, reject)=>{
