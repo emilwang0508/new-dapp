@@ -3,7 +3,7 @@
   <div class="container">
     <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
     <p class="des text-shadow">AAA Space Domination MMO on the Ethereum Blockchain</p>
-    <img src="/static/img/intro.png" alt="intro" class="intro-img" style="width: 100%;max-width: 600px">
+    <img src="/static/img/intro.png" alt="intro" class="intro-img" style="width: 100%;max-width: 600px;margin: 0 auto;display: block;" v-show="showIntro">
     <div class="form-panel">
       <i><img src="/static/img/form-corner.png" alt=""></i>
       <i><img src="/static/img/form-corner.png" alt=""></i>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import '../assets/css/main.scss'
+
 import { mapGetters, mapActions } from 'vuex'
 import Verify from 'vue2-verify'
 
@@ -176,8 +176,8 @@ export default {
     }
   },
   created(){
-    (this.$route.params.code)?this.showIntro = true: true
-
+    (this.$route.params.code!==undefined)?this.showIntro = true: this.showIntro=false
+    console.log(this.$route.params.code)
     if(this.$store.state.logined === true){
       this.$router.push('/')
     }

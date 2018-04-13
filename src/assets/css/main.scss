@@ -151,6 +151,7 @@ p.text-shadow{
     padding: 20px;
     position: relative;
     box-shadow: 0 0 20px #7594cf;
+    max-width: 600px;
     >i{
 	    display: block;
 	    position: absolute;
@@ -179,6 +180,7 @@ p.text-shadow{
       .send-button{
         position: absolute;
         width: 20vw;
+        max-width: 200px;
         height: 3rem;
         top: 0;
         right: -2px;
@@ -389,16 +391,22 @@ p.special{
   background-image: url(/static/img/invite-bg.jpg);
   background-size: cover;
   .qrcode,#qrcode{
-    height: 7rem;
-    width: 7rem;
+    width: 100px;
     float: left;
+    position: relative;
     img{
       width: 100%;
       object-fit: cover;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
   .spaceship{
-    height: 7rem;
+    width: calc(95% - 100px);
+    max-width: 237px;
+    margin-top: calc(3vh);
     float: right;
   }
   .user-center{
@@ -612,4 +620,7 @@ header.header{
 }
 button.verify-btn{
   display: none;
+}
+.mint-msgbox{
+  max-width: 600px;
 }

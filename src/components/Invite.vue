@@ -1,6 +1,6 @@
 <template>
   <div class="invite" id="invite">
-      <div class="container" v-if="this.$store.state.logined">
+      <div class="container" v-if="this.$store.state.logined"  style="max-width: 600px">
           <div class="user-center">
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
@@ -22,7 +22,7 @@
                   {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='"I am playing Decentraverse and earning free tokens everyday. Join me and let us earn tokens together! My invite code is\: " +this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
               <p>Play Decentraverse using this link</p>
-              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'You can use this link to join: '+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
+              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up?code='+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'. You can use this link to join: '+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
 
 
           </div>
@@ -34,7 +34,7 @@
           <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
           <p class="tips">Share a screenshot of this screen to earn lots of DCVT!</p>
       </div>
-      <div class="container" v-else>
+      <div class="container" v-else style="max-width: 600px">
           <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;margin-top: 20vh;font-size:2rem">
               Invite your friends to earn free ETH and DCVT
               <!--Play Decentraverse<br/> Earn FREE ETH and DCVT -->
@@ -67,46 +67,45 @@
       computed: {
         ...mapGetters(['money','logined'])
       },
-      mounted() {
-        console.log(this.$store.state.logined)
-        if(this.$store.state.logined==true){
-          console.log('asdsa')
-          let qrcodeNode = 'test'
-          let qrcode = new QRCode(qrcodeNode, {
-            text:'this.BASE_DOMAIN+\'/#/sign-up/\'+this.$store.state.userInfo.invite_code',
-            width: 180,
-            height: 180,
-            colorDark: "#000000",
-            colorLight: "#ffffff"
-          });
-          console.log(qrcode)
-        }
-      },
       watch:{
         logined(newVal,oldVal){
-          this.$nextTick(function () {
-            let qrcodeNode = 'qrcode'
-            let qrcode = new QRCode(qrcodeNode, {
-              text:'http://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code,
-              width: 180,
-              height: 180,
-              colorDark: "#000000",
-              colorLight: "#ffffff"
-            });
-          })
 
+
+
+          if (newVal!==false){
+            this.$nextTick(function () {
+                let qrcodeNode = 'qrcode'
+                let qrcode = new QRCode(qrcodeNode, {
+                  text:'http://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code,
+                  width: 180,
+                  height: 180,
+                  colorDark: "#000000",
+                  colorLight: "#ffffff"
+                });
+                console.log(qrcode._oDrawing)
+                console.log(qrcode._oDrawing._elImage.currentSrc)
+              })
+          }
+          return newVal
         }
       },
-      created(){
+      updated(){
         if(this.$store.state.logined==true){
-          console.log('asdsa')
+        let qrcodeNode = document.getElementById("qrcode")
+        let qrcode = new QRCode(qrcodeNode, {
+          text:'http://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code,
+          width: 180,
+          height: 180,
+          colorDark: "#000000",
+          colorLight: "#ffffff"
+        });
         }
       },
       methods:{
         copyContent(dom){
             let clipboard = new Clipboard(dom)
           clipboard.on('success', e => {
-            MessageBox.alert('',{message: 'Copy it successfully and share it with your friends!',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
+            MessageBox.alert('',{message: 'Code copied successfully, share with friends to earn 100% DCVT bonus from their rewards',title: 'Tips',confirmButtonText: 'Confirm'}).then(action=>{
 
             })
             // 释放内存

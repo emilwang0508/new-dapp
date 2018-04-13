@@ -11,7 +11,7 @@ const actions = {
   login({commit}, data) {
 
     return new Promise((resolve, reject)=>{
-      api.loginAction(data.name, data.password).then(response => {
+      api.loginAction(data.account, data.password).then(response => {
         if(response.code==200){
           let data = response.msg
           commit(types.SET_SESSION, data.session)

@@ -1,14 +1,16 @@
 <template>
-  <div class="rule">
-      <img :src=imgSrc alt="star" class="star">
+<div class="rule">
+    <div class="container" style="max-width: 600px">
+        <img :src=imgSrc alt="star" class="star">
 
-    <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>
-    <div class="panel">
+        <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>
+        <div class="panel">
         <img src="/static/img/second-des.png" alt="des">
         <button @click="goInvite('#invite')">invite friends</button>
 
+        </div>
+        <img :src=imgShip alt="spaceship" class="ship">
     </div>
-    <img :src=imgShip alt="spaceship" class="ship">
   </div>
 </template>
 

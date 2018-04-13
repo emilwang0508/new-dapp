@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import '../assets/css/main.scss'
+
 import Header from '../components/Header'
 import Lottery from '../components/Lottery'
 import Invite from '../components/Invite'

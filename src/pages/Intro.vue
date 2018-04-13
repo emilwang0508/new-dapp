@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import '../assets/css/main.scss'
+//  import '../assets/css/main.scss'
   import { mapGetters, mapActions } from 'vuex'
   import { Toast } from 'mint-ui'
 

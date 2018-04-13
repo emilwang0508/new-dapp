@@ -1,10 +1,10 @@
 import request from '../utils/request'
-export function loginAction(name, password){
+export function loginAction(account, password){
   return request({
     url: '/api/user/login',
     method: 'post',
     data: {
-      name:name,
+      account:account,
       password:password,
     }
   })

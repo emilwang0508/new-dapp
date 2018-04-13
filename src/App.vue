@@ -5,9 +5,16 @@
 </template>
 
 <script>
-// import './assets/css/main.scss'
+
 export default {
-  name: 'App'
+  name: 'App',
+  created(){
+    if(typeof this.$bowser.mobile!==undefined&&this.$bowser.mobile==true){
+        require('./assets/css/main.scss')
+    }else {
+      require('./assets/css/main.scss')
+    }
+  }
 }
 </script>
 

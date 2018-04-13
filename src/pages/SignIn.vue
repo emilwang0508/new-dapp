@@ -8,9 +8,9 @@
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <div class="input-group">
-          <label for="email" >Name</label>
-          <input type="email" v-model="name" id="email" name="name" v-validate="'required|alpha_dash|min:4|max:30'">
-          <p  v-show="errors.has('name')" class="error">{{ errors.first('name') }}</p>
+          <label for="account" >Account</label>
+          <input type="account" v-model="account" id="email" name="account" v-validate="'required|account|min:4|max:30'" >
+          <p  v-show="errors.has('account')" class="error">{{ errors.first('account') }}</p>
 
         </div>
         <div class="input-group">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import '../assets/css/main.scss'
+
 import { mapGetters, mapActions } from 'vuex'
 import { Toast } from 'mint-ui'
 
@@ -38,7 +38,7 @@ export default {
   data () {
     return {
         msg: 'SignIn',
-        name: '',
+        account: '',
         password: ''
     }
   },
@@ -47,7 +47,7 @@ export default {
       if (event) {
         this.$validator.validateAll().then((result) => {
           if (result){
-            let data = {name: this.name,password: this.password}
+            let data = {account: this.account,password: this.password}
             let _this = this
             this.$store.dispatch('login',data)
               .then((res)=>{
