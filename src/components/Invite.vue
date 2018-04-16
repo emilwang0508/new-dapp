@@ -5,7 +5,7 @@
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
                   <p class="name">{{this.$store.state.userInfo.name}}</p>
-                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (={{this.money}} USD) </p>
+                  <p class="bonus text-shadow">BONUS: {{this.$store.state.userInfo.deposit}}DCVT (≈{{this.money}} USD) </p>
                   <p class="invited">Friends Invited: {{this.$store.state.inviteStatistics.primary}} / Friends of Friends Joined: {{this.$store.state.inviteStatistics.secondary}}  </p>
               </div>
           </div>
@@ -31,7 +31,7 @@
               <img src="/static/img/spaceship.png" alt="spaceship" class="spaceship">
           </div>
           <div class="clear-fix"></div>
-          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
+          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1.4rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 27px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
           <p class="tips">Share a screenshot of this screen to earn lots of DCVT!</p>
       </div>
       <div class="container" v-else style="max-width: 600px">
@@ -39,10 +39,10 @@
               Invite your friends to earn free ETH and DCVT
               <!--Play Decentraverse<br/> Earn FREE ETH and DCVT -->
           </p>
-          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">Your friends and you earn tokens together.<br/>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.3rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">Your friends and you earn tokens together.<br/>
               The more friends invited, the more tokens rewarded.</p>
           <img src="/static/img/spaceship.png" alt="spaceship" class="img100" style="margin: 5vh 0;">
-          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 25px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
+          <p class="text-center" style="margin: 2vh 0;font-family: inherit;font-size: 1.4rem;text-align: left;"><a href="https://discord.gg/McpaHrq" target="_blank"><img src="/static/img/discord.png" alt="discord" style=" width: 27px;margin: 0 10px;float: left;"></a>Join our Discord for occasional airdrops: <a href="https://discord.gg/McpaHrq" target="_blank">discord.gg/McpaHrq</a></p>
       </div>
   </div>
 </template>

@@ -31,6 +31,12 @@ div{
 .h30{
   height: 30px;
 }
+button{
+  cursor: pointer;
+}
+.submit{
+  cursor: pointer;
+}
 //清理浮动
 .cf{
     zoom:1;
@@ -133,7 +139,7 @@ p.text-shadow{
   background-size: cover;
   background-color: #000;
 }
-
+button
 .sign-panel{
   background-image: url("/static/img/background.png");
   min-height: calc(130vh);
@@ -232,6 +238,9 @@ p.text-shadow{
       font-size: 1.5rem;
       text-indent: 1.5rem;
       line-height: 5.5rem;
+    }
+    .submit:disabled{
+      background-image: url(/static/img/submit-btn-disabled.png);
     }
   }
 

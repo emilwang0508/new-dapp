@@ -5,6 +5,7 @@
         <div class="menu fr"  @click="switchStatus" v-bind:class="{ active: isActive }">
             <img src="/static/img/user-icon.png" alt="icon">
             <div class="menu-panel"  v-bind:class="{ active: isActive }">
+                <div >{{this.$store.state.userInfo.name}}</div>
                 <div @click="logout()">Log Out</div>
             </div>
 

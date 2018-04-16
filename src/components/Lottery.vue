@@ -41,7 +41,8 @@
             let _this = this
 
             if (session==null||session==''){
-              MessageBox.alert('',{message: 'Please register or login to play.',title: 'Tips',confirmButtonText: 'Register'}).then(action=>{
+              MessageBox.alert('',{message: 'Please register or login to play.',title: 'Tips',confirmButtonText: 'Register',showCancelButton: true,cancelButtonText: 'Cancel',closeOnClickModal: true}).then(action=>{
+                if(action=='confirm')
                 this.$router.push('/sign-up')
               })
             }else {
@@ -60,7 +61,8 @@
                           console.log(error)
                     })
                 }else {
-                  MessageBox.alert('',{message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',title: 'Tips',confirmButtonText: 'Invite'}).then(action=>{
+                  MessageBox.alert('',{message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',title: 'Tips',confirmButtonText: 'Invite',showCancelButton: true,cancelButtonText: 'Cancel',closeOnClickModal: true}).then(action=>{
+                    if(action=='confirm')
                     _this.goInvite('#invite')
                   })
                 }

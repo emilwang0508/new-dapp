@@ -2,7 +2,7 @@
   <div class="sign-panel">
     <div class="container">
       <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
-      <p class="des text-shadow">AAA Space Domination MMO on the Ethereum Blockchain</p>
+      <p class="des text-shadow text-center">AAA Space Domination MMO on the Ethereum Blockchain</p>
       <div class="form-panel">
         <i><img src="/static/img/form-corner.png" alt=""></i>
         <i><img src="/static/img/form-corner.png" alt=""></i>
@@ -55,7 +55,7 @@ export default {
             this.$store.dispatch('login',data)
               .then((res)=>{
                 _this.getUserInfo(res.msg.session)
-
+                _this.submitIsDisabled = true
               }).catch((error)=>{
                 if (error)
                   _this.submitIsDisabled = false

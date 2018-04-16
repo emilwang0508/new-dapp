@@ -2,7 +2,7 @@
 <div class="sign-panel ">
   <div class="container">
     <a href="/#/"><img src="/static/img/logo.png" alt="logo" class="logo"></a>
-    <p class="des text-shadow">AAA Space Domination MMO on the Ethereum Blockchain</p>
+    <p class="des text-shadow text-center">AAA Space Domination MMO on the Ethereum Blockchain</p>
     <img src="/static/img/intro.png" alt="intro" class="intro-img" style="width: 100%;max-width: 600px;margin: 0 auto;display: block;" v-show="showIntro">
     <div class="form-panel">
       <i><img src="/static/img/form-corner.png" alt=""></i>
@@ -41,7 +41,7 @@
         <Verify :type="3" :barSize="{width:'100%',height:'40px'}"  explain="slide to right" @success="verify('success')"  @error="verify('error')"></Verify>
       </div>
       <div class="h30"></div>
-      <button class="submit" v-on:click="handleSumit">Submit</button>
+      <button class="submit" v-on:click.prevent="handleSumit" :disabled="submitIsDisabled">Submit</button>
     </div>
     <p class="text-center text-shadow" style="margin:2rem 0;font-size:1.5rem">I already have an account, please <a href="/#/sign-in" style="text-decoration: underline;">login</a></p>
     <div class="h50"></div>
@@ -101,19 +101,23 @@ export default {
             invite_code: this.code,
             addresss: this.address,
           }
+        this.submitIsDisabled = true
         this.$validator.validateAll().then((result) => {
           if(result){
-
             this.$store.dispatch('signUp',form )
               .then(res=>{
                 _this.getUserInfo(res.msg.session)
-
+                this.submitIsDisabled = true
               })
               .catch(error=>{
                 this.submitIsDisabled = false
               })
+          }else {
+            this.submitIsDisabled = false
           }
-        });
+
+
+        })
       }
     },
     verify(e){
