@@ -69,7 +69,9 @@ export default {
       buttonMsg:'Send',
       timer: null,
       count: 0,
-      showIntro: false
+      showIntro: false,
+      submitIsDisabled: false,
+
     }
   },
   components:{
@@ -77,6 +79,7 @@ export default {
   },
   methods:{
     handleSumit: function(event){
+      this.submitIsDisabled = true
       let _this = this
       if(this.isVerified == false){
         _this.$toast('Verification code verification failed')
@@ -107,7 +110,7 @@ export default {
 
               })
               .catch(error=>{
-
+                this.submitIsDisabled = false
               })
           }
         });

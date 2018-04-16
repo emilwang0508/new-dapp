@@ -4,7 +4,7 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  BASE_API: '"//www.decentraverse.io"',
+  BASE_API: '"//decentraverse.io"',
   BASE_HOST:'"api"',
-  BASE_DOMAIN: `"www.decentraverse.io"`,
+  BASE_DOMAIN: `"decentraverse.io"`,
 })

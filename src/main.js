@@ -30,8 +30,9 @@ const isAccount = {
   },
   validate(value, args) {
     // Returns a Boolean or a Promise.
-    let email = /^[A-Za-z0-9]*$/
-    let name = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/
+    let name = /^[A-Za-z0-9]*$/
+    let email = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/
+
     if(email.test(value)||name.test(value)){
       return true
     }else{

@@ -20,7 +20,7 @@
 
         </div>
         <div class="h30"></div>
-        <button class="submit"  v-on:click="login">Submit</button>
+        <button class="submit"  v-on:click="login" :disabled="this.submitIsDisabled">Submit</button>
       </div>
       <p class="text-center text-shadow" style="margin:2rem 0;font-size:1.5rem">if you don't have an account, please <a href="/#/sign-up" style="text-decoration: underline;">register</a></p>
 
@@ -39,11 +39,14 @@ export default {
     return {
         msg: 'SignIn',
         account: '',
-        password: ''
+        password: '',
+        submitIsDisabled: false
     }
   },
   methods: {
     login: function (event) {
+      this.submitIsDisabled = true
+      let _this = this
       if (event) {
         this.$validator.validateAll().then((result) => {
           if (result){
@@ -54,7 +57,8 @@ export default {
                 _this.getUserInfo(res.msg.session)
 
               }).catch((error)=>{
-
+                if (error)
+                  _this.submitIsDisabled = false
             })
           }
         })
