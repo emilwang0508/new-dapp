@@ -44,22 +44,16 @@ const isAccount = {
 VeeValidate.Validator.extend('account', isAccount);
 Vue.use(VeeValidate)
 
-
-/*// Vue.use(Loading);
-
-// Vue.use(Message);
-Vue.use(Toast);
-Vue.use(MessageBox);*/
-// let aaa = process.env.BASE_DOMAIN
-// console.log(aaa)
 Vue.prototype.BASE_DOMAIN = process.env.BASE_DOMAIN
 Vue.prototype.$bowser = bowser
+
 window.locale = require('store')
-/* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
+

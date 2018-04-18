@@ -2,36 +2,10 @@
   <div class="index">
       <div class="banner">
           <Header />
-          <div class="container">
-              <div class="left">
-                  <img src="/static/img/logo.png" alt="logo" class="logo">
-                  <p class="text-shadow text-center">AAA Space Domination MMO on the Ethereum Blockchain</p>
-                  <div class="intro-des">
-                      <p>• Every conquestor has three chances to earn supply drops each day!</p>
-
-                      <p>• An equal amount of DCVT earned by your friend
-                      each day will also be awarded to you.</p>
-
-                      <p>• If your friend also invites their friends, you will earn 25% of the DCVT earned by friends-of-friends.</p>
-
-                      <p>• DCVT given away this round of bounty airdrop: 1,000,000 Total value: $10M USD</p>
-
-                      <p>• You will get rewarded for the frist 25 friends you
-                      invite, and the frist 500 people invited by your
-                      friends.</p>
-                  </div>
-                  <div class="clearfix"></div>
-                  <a href="https://youtu.be/8SlrUund6Rc" class="video-link  link" target="_blank"><p class="text-shadow special">Video</p></a>
-                  <a href="#" class="coming-link link"><p class="text-shadow special">COMING SOON</p></a>
-              </div>
-              <div class="right">
-                  <Lottery />
-              </div>
-
-
-          </div>
-
-
+          <img src="/static/img/logo.png" alt="logo" class="logo">
+          <p class="text-shadow text-center">AAA Space Domination MMO on the Ethereum Blockchain</p>
+          <a href="/#/intro" class="button-more"><img :src=imgMore alt="button-more"></a>
+          <Lottery />
           <div class="h50"></div>
       </div>
       <Rule />
@@ -41,11 +15,11 @@
 
 <script>
 
-import Header from '../components/Header'
-import Lottery from '../components/Lottery'
-import Invite from '../components/Invite'
-import Rule from '../components/Rule'
-import imgMore from '../../static/img/more.png'
+import Header from '../../components/mobile/Header'
+import Lottery from '../../components/mobile/Lottery'
+import Invite from '../../components/mobile/Invite'
+import Rule from '../../components/mobile/Rule'
+import imgMore from '../../../static/img/more.png'
 export default {
   name: 'Hello',
   data () {

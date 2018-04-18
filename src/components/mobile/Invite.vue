@@ -1,6 +1,6 @@
 <template>
   <div class="invite" id="invite">
-      <div class="container" v-if="this.$store.state.logined">
+      <div class="container" v-if="this.$store.state.logined"  style="max-width: 600px">
           <div class="user-center">
               <img src="/static/img/uc.png" alt="" class="fl">
               <div class="fl">
@@ -10,47 +10,24 @@
               </div>
           </div>
           <div class="clear-fix"></div>
-          <div style="position: relative">
-              <p class="text-left text-shadow" style="font-family: 'special';margin: 2vh 0;font-size: 50px">Invite your friends to <br/>earn free ETH and DCVT</p>
-              <p class="text-left" style=" margin: 3vh 0;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">
-                  Your friends and you earn tokens together.
-                  The more friends invited, the more tokens rewarded.</p>
-              <div class="intro-des">
-                  <p>• Every conquestor has three chances to earn supply drops each day!</p>
+          <p class="text-center text-shadow" style="font-family: special;margin: 2vh 0;font-size:2rem">Invite your friends to <br/>earn free ETH and DCVT</p>
+          <p class="text-center" style=" margin: 3vh 0px;color: #999999;font-size: 1.0rem;"><img src="/static/img/question-icon.png" alt="question" style="width: 1rem;margin: 0 5px">Your friends and you earn tokens together.<br/>
+              The more friends invited, the more tokens rewarded.</p>
 
-                  <p>• An equal amount of DCVT earned by your friend
-                      each day will also be awarded to you.</p>
 
-                  <p>• If your friend also invites their friends, you will earn 25% of the DCVT earned by friends-of-friends.</p>
 
-                  <p>• DCVT given away this round of bounty airdrop: 1,000,000 Total value: $10M USD</p>
-
-                  <p>• You will get rewarded for the frist 25 friends you
-                      invite, and the frist 500 people invited by your
-                      friends.</p>
-                  <img src="/static/img/star2.png" alt="star" style="position: absolute;top: -280px;left: 780px;">
+          <div class="code-panel">
+              <p>My Invitation Code</p>
+              <div class="">
+                  {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='"I am playing Decentraverse and earning free tokens everyday. Join me and let us earn tokens together! My invite code is\: " +this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
               </div>
+              <p>Play Decentraverse using this link</p>
+              <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'. You can use this link to join: https://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
+
 
           </div>
-
-          <div class="clear-fix"></div>
-          <div class="left" style="width: 375px">
-              <div class="qrcode" id="qrcode"></div>
-          </div>
-          <div class="right">
-              <div class="code-panel">
-                  <p>My Invitation Code</p>
-                  <div class="">
-                      {{this.$store.state.userInfo.invite_code}}<div class="copy copy-code" :data-clipboard-text='"I am playing Decentraverse and earning free tokens everyday. Join me and let us earn tokens together! My invite code is\: " +this.$store.state.userInfo.invite_code'  v-on:click="copyContent('.copy-code')" >COPY</div>
-                  </div>
-                  <p>Play Decentraverse using this link</p>
-                  <div class=""><p>{{this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code}} </p><div class="copy copy-link" :data-clipboard-text="'I am playing Decentraverse and earning free tokens everyday. Join me and let\'s earn tokens together! My invite code is: '+ this.$store.state.userInfo.invite_code +'. You can use this link to join: https://'+this.BASE_DOMAIN+'/#/sign-up/'+this.$store.state.userInfo.invite_code" v-on:click="copyContent('.copy-link')">COPY</div></div>
-
-              </div>
-          </div>
-
           <div class="div" style="height: 9rem;margin: 5vh 0;">
-
+              <div class="qrcode" id="qrcode"></div>
               <img src="/static/img/spaceship.png" alt="spaceship" class="spaceship">
           </div>
           <div class="clear-fix"></div>
@@ -73,7 +50,7 @@
 <script>
     import Clipboard from 'clipboard';
     import { MessageBox } from 'mint-ui'
-    import { FloatMul } from '../common'
+    import { FloatMul } from '../../common'
     import { mapGetters } from 'vuex'
     import QRCode from 'qrcodejs2'
     export default {

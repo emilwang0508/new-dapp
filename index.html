@@ -39,18 +39,12 @@
 
     window.onscroll = function(){
       var top = document.documentElement.scrollTop || document.body.scrollTop;
-      var _iframe = document.getElementsByName('intercom-launcher-frame')
-      var _iframe2 = document.getElementsByName('intercom-launcher-badge-frame')
-      var chat = document.getElementsByClassName('intercom-chat')
-      if(_iframe[0]!==undefined||_iframe2[0]!==undefined){
+      var _iframe = document.getElementsByClassName('intercom-app')
+      if(_iframe[0]!==undefined){
         if( top >= 1000 ) {
           _iframe[0].style.display = "none"
-          _iframe2[0].style.display = "none"
-          chat[0].style.display = "none"
         } else {
           _iframe[0].style.display = "block"
-          _iframe2[0].style.display = "none"
-          chat[0].style.display = "none"
         }
       }
 

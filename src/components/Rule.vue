@@ -1,16 +1,29 @@
 <template>
 <div class="rule">
-    <div class="container" style="max-width: 600px;position: relative;height: inherit;">
         <img :src=imgSrc alt="star" class="star">
 
-        <p class="text-right text-shadow special title containercontainer">Supply <br/> Rules for  <br/>the War Effort</p>
-        <div class="panel">
-        <img src="/static/img/second-des.png" alt="des">
-        <button @click="goInvite('#invite')">invite friends</button>
+        <p class="text-center text-shadow special title containercontainer">Supply Rules for the War Effort</p>
+        <div style="position: relative" class="container">
+            <!--<img src="/static/img/rule-intro.png" alt="des" style="margin: 170px auto;display: block;">-->
+            <div class="intro-des">
+                <p>• Every conquestor has three chances to earn supply drops each day!</p>
+
+                <p>• An equal amount of DCVT earned by your friend
+                    each day will also be awarded to you.</p>
+
+                <p>• If your friend also invites their friends, you will earn 25% of the DCVT earned by friends-of-friends.</p>
+
+                <p>• DCVT given away this round of bounty airdrop: 1,000,000 Total value: $10M USD</p>
+
+                <p>• You will get rewarded for the frist 25 friends you
+                    invite, and the frist 500 people invited by your
+                    friends.</p>
+                <button @click="goInvite('#invite')" class="invite-btn">invite friends</button>
+            </div>
 
         </div>
+
         <img :src=imgShip alt="spaceship" class="ship">
-    </div>
   </div>
 </template>
 

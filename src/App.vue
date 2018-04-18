@@ -12,7 +12,7 @@ export default {
     if(typeof this.$bowser.mobile!==undefined&&this.$bowser.mobile==true){
         require('./assets/css/main.scss')
     }else {
-      require('./assets/css/main.scss')
+      require('./assets/css/index.scss')
     }
   }
 }
