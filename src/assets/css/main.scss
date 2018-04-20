@@ -125,9 +125,7 @@ p.text-shadow{
     font-size: 1.2rem;
 }
 .container{
-	width: 90%;
     margin: 0 auto;
-    max-width: 1200px;
 }
 #app{
   //background-image: url("/static/img/background.png");
@@ -637,4 +635,8 @@ button.verify-btn{
 }
 .mint-msgbox{
   max-width: 600px;
+}
+
+#phone{
+  width: 460px!important;
 }

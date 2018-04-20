@@ -8,6 +8,9 @@ import MSignIn from '../pages/mobile/SignIn'
 import SignUp from '../pages/SignUp'
 import MSignUp from '../pages/mobile/SignUp'
 import Intro from '../pages/Intro'
+import Uc from '../pages/Uc'
+import ResetPwd from '../pages/ResetPwd'
+import Guide from '../pages/Guide'
 
 
 Vue.use(Router)
@@ -39,6 +42,11 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         path: '/sign-up/:code',
         name: 'SignUpWithCode',
         component: SignUp
+      },
+      {
+        path: '/guide',
+        name: 'Guide',
+        component: Guide
       }
     ]
   })
@@ -50,6 +58,11 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         path: '/',
         name: 'HelloWorld',
         component: HelloWorld
+      },
+      {
+        path: '/reset-password',
+        name: 'ResetPwd',
+        component: ResetPwd
       },
       {
         path: '/sign-in',
@@ -70,40 +83,20 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         path: '/sign-up/:code',
         name: 'SignUpWithCode',
         component: SignUp
+      },
+      {
+        path: '/uc',
+        name: 'UserCenter',
+        component: Uc
+      },
+      ,
+      {
+        path: '/guide',
+        name: 'Guide',
+        component: Guide
       }
     ]
   })
 
 }
-/*
-export default new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'HelloWorld',
-            component: HelloWorld
-        },
-        {
-            path: '/sign-in',
-            name: 'SignIn',
-            component: SignIn
-        },
-        {
-            path: '/sign-up',
-            name: 'SignUp',
-            component: SignUp
-        },
-        {
-            path: '/intro',
-            name: 'Intro',
-            component: Intro
-        },
-        {
-            path: '/sign-up/:code',
-            name: 'SignUpWithCode',
-            component: SignUp
-        }
-    ]
-})
-*/
 export default router

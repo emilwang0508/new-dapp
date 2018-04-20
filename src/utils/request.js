@@ -91,6 +91,21 @@ service.interceptors.response.use(
         case 506:
           Toast('verify code error!!!')
           break;
+        case 507:
+          // Toast('illegal name!!!')
+          break;
+        case 508:
+          // Toast('has verified!')
+          break;
+        case 509:
+          // Toast('phone number error!')
+          break;
+        case 510:
+          // Toast('verify code has used!')
+          break;
+        case 511:
+          // Toast('can't find user')
+          break;
         default:
           Toast('error')
           break;

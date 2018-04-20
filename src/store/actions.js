@@ -95,6 +95,32 @@ const actions = {
 
         })
     })
-  }
+  },
+  updatePhone({commit}, e){
+    return new Promise((resolve, reject)=>{
+      api.updatePhone(e).then(response => {
+        if(response.code==200){
+
+        }
+        resolve(response); })
+        .catch(error =>
+        {
+
+        })
+    })
+  },
+  updateAddress({commit}, e){
+    return new Promise((resolve, reject)=>{
+      api.updateAddress(e).then(response => {
+        if(response.code==200){
+
+        }
+        resolve(response); })
+        .catch(error =>
+        {
+
+        })
+    })
+  },
 }
 export default actions

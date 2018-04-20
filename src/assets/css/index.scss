@@ -379,7 +379,7 @@ button
     margin: 2rem 0;
   }
 }
-p.special{
+p.special,span.special{
   font-family: 'special';
   margin: 1vh auto;
 }
@@ -711,4 +711,11 @@ button.verify-btn{
 }
 .mint-msgbox{
   max-width: 600px;
+}
+#phone{
+  width: 460px!important;
+  position: relative;
+}
+.country-list{
+  color: #000;
 }

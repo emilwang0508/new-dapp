@@ -120,19 +120,103 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+    .container{
+        width: 90%;
+    }
+    .invite{
+        min-height: 100vh;
+        background-image: url(/static/img/invite-bg.jpg);
+        background-size: cover;
+    .qrcode,#qrcode{
+        width: 100px;
+        float: left;
+        position: relative;
+    img{
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    }
+    .spaceship{
+        width: calc(95% - 100px);
+        max-width: 237px;
+        margin-top: calc(3vh);
+        float: right;
+    }
+    .user-center{
+        margin-top: 30px;
+    img{
+        width: 20%;
+    }
+    >div{
+        width: 80%;
+    }
+    .name{
+        font-family: 'special';
+        font-size: 1.5rem;
+    }
+    .bonus{
+        font-size: 1.5rem;
+    }
+    .invited{
+        font-size: 1.5rem;
+    }
+    }
+    .des{
+        text-align: center;
+    img{
+        object-fit: cover;
+        width: 100%;
+        max-width: 600px;
+    }
+    }
+    .img100{
+        width: 100%;
+        object-fit: cover;
+    }
+    .code-panel{
+        margin: 5vh auto;
+        max-width: 600px;
+    >p{
+        font-family: 'special';
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+    }
+
+    >div{
+
+        position: relative;
+        height: 50px;
+        width: 100%;
+        border: 1px solid transparent;
+        border-image-source: url(/static/img/code-panel-border.png);
+        border-image-slice: 0 fill;
+        border-image-width: 0px;
+        line-height: 50px;
+        text-indent: 8%;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    p{
+        width: 70%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 50px;
+    }
+    .copy{
+        position: absolute;
+        right: 8%;
+        top: 0;
+    }
+    }
+    }
+    .tips{
+        font-family: "Microsoft YaHei UI";
+        font-size: 0.9rem;
+        color: #949494;
+    }
+    }
 </style>

@@ -54,3 +54,39 @@ export function getCodeAction(action,source){
     }
   })
 }
+
+export function updatePhone(form){
+  return request({
+    url: '/api/user/update_phone',
+    method: 'post',
+    data: {
+      session: form.session,
+      phone: form.phone,
+      password: form.password,
+      verify_code: form.verify_code,
+    }
+  })
+}
+export function updateAddress(form){
+  return request({
+    url: '/api/user/update_address',
+    method: 'post',
+    data: {
+      session: form.session,
+      address: form.address,
+      password: form.password,
+    }
+  })
+}
+
+export function resetPassword(form){
+  return request({
+    url: '/api/common/reset_password',
+    method: 'post',
+    data: {
+      source: form.source,
+      password: form.password,
+      verify_code: form.verify_code,
+    }
+  })
+}
