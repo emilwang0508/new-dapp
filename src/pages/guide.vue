@@ -6,7 +6,7 @@
         <img src="/static/img/guide-step-1.png" alt="guide">
         <p class="special text-shadow">2、step second: "ADD TOKEN" </p>
         <img src="/static/img/guide-step-2.png" alt="guide">
-        <p class="special text-shadow">3、step third:The third step: enter the Token Contract<br/> Address: 0xf349a95364cdcc8aeffddc2ca3df577fd11c66aa .<br/> Click "ADD".</p>
+        <p class="special text-shadow">3、step third:The third step: enter the Token Contract<br/> Address: 0xded830c9685769367ed177b1aa41e348b561a78c .<br/> Click "ADD".</p>
         <img src="/static/img/guide-step-3.png" alt="guide">
     </div>
 </template>
