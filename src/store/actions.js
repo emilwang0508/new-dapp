@@ -25,6 +25,7 @@ const actions = {
   logout({commit}) {
     commit(types.LOGOUT)
     commit(types.RESET)
+    this.$router.push('/')
   },
   signUp({commit}, form) {
 

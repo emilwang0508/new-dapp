@@ -120,8 +120,8 @@
             img.capsule{
                 margin: 10%;
                 position: absolute;
-                top: 18px;
-                left: 18px;
+                top: 10px;
+                left: 10px;
             }
         }
 

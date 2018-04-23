@@ -1,26 +1,29 @@
 <template>
     <div class="uc">
         <Header></Header>
+        <div style="width: 1130px;margin: 80px auto 0">
+            <a href="/#/" style="text-decoration: underline">Home</a> > <span>User Center</span>
+        </div>
         <div class="uc-panel">
             <div class="info-panel">
                 <div class="name">
                     <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">User name</span><span>{{this.$store.state.userInfo.name}}</span></p>
                 </div>
                 <div class="wallet">
-                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">My  wallet</span><span>
-                       <a href="#" v-if="this.$store.state.userInfo.address!=='0x0'">{{this.$store.state.userInfo.address}}</a> <a href="#" @click="handleModal('wallet')"  v-else >Please bind your wallet account.</a></span></p>
+                    <p><span class="icon"><img src="/static/img/wallet-icon.png" alt="icon"></span><span class="text-shadow special">My  wallet</span><span>
+                       <span v-if="this.$store.state.userInfo.address!=='0x0'">{{this.$store.state.userInfo.address}}</span> <a href="#" @click="handleModal('wallet')"  v-else >Please bind your wallet account.</a></span></p>
                 </div>
                 <div class="phone">
-                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">My  phone</span>
+                    <p><span class="icon"><img src="/static/img/phone-icon.png" alt="icon"></span><span class="text-shadow special">My  phone</span>
                         <span>
-                            <a href="#" v-if="this.$store.state.userInfo.phone!=='0'">{{this.$store.state.userInfo.phone}}</a>
+                            <span v-if="this.$store.state.userInfo.phone!=='0'">{{this.$store.state.userInfo.phone}}</span>
                             <a href="#" @click="handleModal('phone')" v-else>Please bind your phone number.</a>
                         </span>
                     </p>
                 </div>
                 <div class="token">
                     <p>
-                        <span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span>
+                        <span class="icon"><img src="/static/img/token-icon.png" alt="icon"></span>
                         <span class="text-shadow special">My  token</span>
                         <span class="amount special">{{this.$store.state.userInfo.deposit}} DCVT</span>
                         <span class="transfer-button" @click="handleModal('token')">Transfer to Wallet</span>
@@ -32,14 +35,10 @@
                 <div class="tag-list">
                     <div class="tag special text-center text-shadow fl" @click="switchTag(index)"  v-for="(tag, index) in tags" v-bind:class="{active:(tagIndex==index)}">{{tag.text}}</div>
                 </div>
+                <div class="content-list">
+                    <div><p class="text-center" style="padding-top: 200px">You haven't got anything.</p></div>
+                </div>
             </div>
-<!--            <div class="tag-group fl">
-                <div class="tag">Bind your digital wallet</div>
-                <div class="tag">Bind your cell phone number</div>
-                <div class="tag">Extraction of token</div>
-                <div class="tag">The process of token  extraction</div>
-            </div>-->
-
         </div>
         <div class="modal" v-show="showModal!==''">
             <div class="close-panel" @click="closeModal"></div>
@@ -47,9 +46,11 @@
                 <div class="form-panel"  v-if="showModal=='token'">
                     <p class="text-shadow special">Extraction of token</p>
                     <div class="h30"></div>
-                    <div class="input-group token">
+                    <div class="input-group token" style="position: relative">
                         <label for="amount"><p class="text-shadow des">Please enter the amount of money you want to pick up the token </p></label>
-                        <input type="number" name="amount" step="20" min="20" v-model="amount">
+                        <input type="text" name="amount" step="20" min="20" v-model="amount" style="padding: 0 50px;width: calc(100% - 100px);">
+                        <button @click="updateAmount('add')" class="update-amount-btn add-button">+</button>
+                        <button @click="updateAmount('sub')" class="update-amount-btn sub-button">-</button>
                     </div>
                     <div class="input-group">
                         <label for="password"><p class="text-shadow des">Password </p></label>
@@ -61,7 +62,7 @@
                     <p class="text-shadow special">Bind your digital wallet</p>
                     <div class="h30"></div>
                     <div class="input-group">
-                        <label for="amount"><p class="text-shadow des">Metamask digital wallet address </p></label>
+                        <label for="address"><p class="text-shadow des">Metamask digital wallet address </p></label>
                         <input type="text" name="address" v-model="address" readonly>
                     </div>
                     <div class="input-group">
@@ -74,12 +75,12 @@
                     <p class="text-shadow special">Bind your mobile phone number</p>
                     <div class="h30"></div>
                     <div class="input-group" style="position: relative">
-                        <label for="amount"><p class="text-shadow des">Please bind your cell phone number</p></label>
+                        <label for="phone"><p class="text-shadow des">Please bind your cell phone number</p></label>
                         <VuePhoneInput :phone="phone" v-on:listen-to-child-event=""></VuePhoneInput>
                         <button class="send-button special" :disabled="this.isDisabled" @click="getCode">{{this.buttonMsg}}</button>
                     </div>
                     <div class="input-group" style="position: relative">
-                        <label for="amount"><p class="text-shadow des">Verification Code</p></label>
+                        <label for="verifyCode"><p class="text-shadow des">Verification Code</p></label>
                         <input type="text" name="verifyCode" placeholder="Verification Code" v-validate="'required|alpha_num'" v-model="verifyCode">
                         <p  v-show="errors.has('verifyCode')" class="error">{{ errors.first('verifyCode') }}</p>
                     </div>
@@ -115,7 +116,7 @@ export default {
               type: Object,
               code: 93
             },
-            amount: '',
+            amount: 0,
             address: web3.currentProvider.publicConfigStore._state.selectedAddress,
             mobile: '',
             buttonMsg:'Send',
@@ -135,7 +136,7 @@ export default {
             ],
             tagIndex: 0,
             showModal: '',
-            transferDisabled: true,//账户禁止
+            transferDisabled: false,//账户禁止
             noticeShow: false
         }
     },
@@ -226,10 +227,10 @@ export default {
             if(result){
               this.$store.dispatch('updatePhone',form ).then(res=>{
 
-                this.submitIsDisabled = true
                 Toast('Bind successfully!')
                 this.showModal = ''
                 this.$store.commit('UPDATE_USER_INFO',{key:'phone',value:form.phone})
+                this.submitIsDisabled = false
               }).catch(error=>{
                 this.submitIsDisabled = false
               })
@@ -259,9 +260,9 @@ export default {
             if(result){
               this.$store.dispatch('updateAddress',form ).then(res=>{
 
-                this.submitIsDisabled = true
                 Toast('Bind successfully!')
                 this.showModal = ''
+                this.submitIsDisabled = false
                 this.$store.commit('UPDATE_USER_INFO',{key:'address',value:form.address})
               }).catch(error=>{
                 this.submitIsDisabled = false
@@ -281,7 +282,7 @@ export default {
           address: _this.address,
           password: this.password,
           session: locale.get('session'),
-          amount: this.amount,
+          amount: ""+this.amount,
           action: 'dcvt'
         }
         this.$validator.validateAll().then((result) => {
@@ -314,8 +315,15 @@ export default {
           this.showModal = e
         }
 
-      }
+      },
+      updateAmount(e){
+        if(e=='add'){
+            this.amount = this.amount + 20
+        }else {
+          this.amount!==0?this.amount = this.amount - 20:this.amount=0
+        }
 
+      }
 
     },
     watch:{
@@ -350,9 +358,8 @@ export default {
       let session = locale.get('session')
       let _this = this
       let _address = web3.currentProvider.publicConfigStore._state.selectedAddress
-      if(_address==undefined){
-        this.noticeShow = true
-      }
+      if(_address===undefined){_this.noticeShow = true}else{ this.noticeShow = false}
+
       if (session!==undefined) {
         axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
           if (res.status===200&&res.data.code==200){
@@ -368,9 +375,9 @@ export default {
             _this.$store.dispatch('getUserInfo', session)
             _this.$store.commit('SET_SESSION',session)
             if(_this.$store.state.userInfo.phone===0||_this.$store.state.userInfo.addresss=='0x0'){
-              _this.transferDisabled = true
+              _this.transferDisabled = true// 交易禁止
             }else {
-              _this.transferDisabled = false
+              _this.transferDisabled = false //允許交易
             }
 
 
@@ -400,7 +407,7 @@ export default {
             width: 1000px;
             height: 660px;
             padding: 80px 100px;
-            margin: 80px auto;
+            margin: 0px auto 100px;
             .info-panel{
                 >div{
                     height: 40px;
@@ -429,7 +436,12 @@ export default {
                     span.amount{
                         font-size: 25px;
                         width: 300px;
+                        height: 40px;
+                        line-height: 40px;
                         display: inline-block;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
                     }
                     .transfer-button{
                         display: inline-block;
@@ -512,6 +524,7 @@ export default {
             position: absolute;
             width: 100%;
             height: 100%;
+            cursor: url(/static/img/closed-btn.png) 2 2, pointer;
         }
     }
     .form-group{
@@ -579,5 +592,20 @@ export default {
             height: 25px;
             background: url(/static/img/closed-btn.png) no-repeat center;
         }
+
+    }
+    button.update-amount-btn{
+        position: absolute;
+        bottom: 13px;
+        height: 37px;
+        border: none;
+        width: 37px;
+        border-radius: 3px;
+    }
+    button.add-button{
+        left: -1px;
+    }
+    button.sub-button{
+        right: -1px;
     }
 </style>

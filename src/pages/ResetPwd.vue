@@ -34,7 +34,7 @@
 
             </div>
             <div class="input-group">
-              <label for="password" >Password</label>
+              <label for="password" >New Password</label>
               <input type="password" v-model="password" id="password" name="password" v-validate="'required|min:6|max:30'"  placeholder="Enter your password">
               <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
 

@@ -86,6 +86,11 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         component: Intro
       },
       {
+        path: '/referrer/:code',
+        name: 'SignUpWithCode',
+        component: SignUp
+      },
+      {
         path: '/sign-up/:code',
         name: 'SignUpWithCode',
         component: SignUp
@@ -95,7 +100,6 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         name: 'UserCenter',
         component: Uc
       },
-      ,
       {
         path: '/guide',
         name: 'Guide',

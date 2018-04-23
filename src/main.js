@@ -52,7 +52,7 @@ const isAccount = {
 VeeValidate.Validator.extend('account', isAccount);
 Vue.use(VeeValidate)
 Vue.use(TntlTelInput)
-
+window.router = router
 Vue.prototype.BASE_DOMAIN = process.env.BASE_DOMAIN
 Vue.prototype.$bowser = bowser
 Vue.prototype.$web3 = web3
