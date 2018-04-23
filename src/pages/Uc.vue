@@ -38,6 +38,7 @@
 
         </div>
         <div class="modal" v-show="showModal">
+            <div class="close-panel"></div>
             <div class="form-group">
 <!--                <div class="form-panel">
                     <p class="text-shadow special">Extraction of token</p>
@@ -429,6 +430,9 @@ export default {
     .form-group{
         width: 600px;
         margin: 100px auto;
+        .close-panel{
+
+        }
     }
     .form-panel{
         border-image-source: url(/static/img/form-panel-border.png);
