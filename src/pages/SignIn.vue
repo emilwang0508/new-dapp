@@ -69,7 +69,7 @@ export default {
       let _this = this
       this.$store.dispatch('getUserInfo',session)
         .then((res)=>{
-          _this.$router.push('/')
+          _this.$router.push('/bounty')
           document.documentElement.scrollTop  = 0
           window.pageYOffset  = 0
           document.body.scrollTop  = 0
@@ -80,7 +80,7 @@ export default {
   },
   created(){
     if(this.$store.state.logined === true){
-      this.$router.push('/')
+      this.$router.push('/bounty')
     }
   },
   mounted(){

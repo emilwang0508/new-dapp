@@ -28,7 +28,7 @@
     },
     methods: {
         handleClose(){
-            this.$router.push('/')
+            this.$router.push('/bounty')
         }
     }
   }

@@ -41,7 +41,7 @@ export default {
 
         })
       }else{
-        _this.$router.push('/')
+        _this.$router.push('/bounty')
       }
     },
 }

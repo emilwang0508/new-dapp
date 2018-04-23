@@ -13,7 +13,7 @@ const mutations = {
     state.logined = false
     state.session = null
     locale.set('session')
-    router.push('/')
+    router.push('/bounty')
   },
   [types.SET_SESSION](state,data){
     state.session = data

@@ -151,7 +151,7 @@ export default {
   },
   created(){
     if(this.$store.state.logined === true){
-      this.$router.push('/')
+      this.$router.push('/bounty')
     }
   },
   mounted(){

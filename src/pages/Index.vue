@@ -8,7 +8,7 @@
                     <p class="content">Decentraverse aims to be the world’s first major MMO blockchain game. Set in outer space, players can purchase warships, collect a variety of armaments, and attack and occupy any planet in the universe, the latter for which you will be handsomely rewarded. However, other players will compete with you for the planets’ resources, and you will need to develop your own strategies to win the war of aggression.</p>
                 </div>
                 <div class="buttons">
-                    <a href="/#/bounty??utm_source=website&utm_content=button1"><img src="/static/img/activity-ico.png">BOUNTY PROGRAM</a>
+                    <a href="/#/bounty?utm_source=website&utm_content=button1"><img src="/static/img/activity-ico.png">BOUNTY PROGRAM</a>
                     <a  href="/#/play-game?utm_source=website&utm_content=button2" style="border: 1px solid white;background: transparent;"><img src="/static/img/game-ico.png">PLAY NOW</a>
                 </div>
             </div>

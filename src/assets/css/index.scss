@@ -133,15 +133,18 @@ p.text-shadow{
   background-size: cover;
   background-color: #000;
 }
-button
+
 .sign-panel{
-  background-image: url("/static/img/background.png");
+  //background-image: url("/static/img/background.png");
   min-height: calc(130vh);
   margin-top: -1px;
   padding-top: 1px;
   background-repeat: no-repeat;
   background-size: cover;
-  // min-height: 650px;
+  a{
+    text-align: center;
+    display: block;
+  }
   .des{
     text-align: center;
     font-size: 1.7rem;
@@ -387,7 +390,7 @@ p.special,span.special{
 
   }
   .bonus{
-    margin:10%;
+    margin:0 10%;
     position: absolute;
     top: 10px;
     left: 10px;
