@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import bowser from 'bowser'
 import HelloWorld from '../pages/HelloWorld'
-import MIndex from '../pages/mobile/HelloWorld'
+import MHello from '../pages/mobile/HelloWorld'
+import Index from '../pages/Index'
 import SignIn from '../pages/SignIn'
 import MSignIn from '../pages/mobile/SignIn'
 import SignUp from '../pages/SignUp'
@@ -12,6 +13,7 @@ import Uc from '../pages/Uc'
 import MUc from '../pages/mobile/Uc'
 import ResetPwd from '../pages/ResetPwd'
 import Guide from '../pages/Guide'
+import Play from '../pages/Play'
 
 
 Vue.use(Router)
@@ -21,8 +23,18 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
     routes: [
       {
         path: '/',
+        name: 'Index',
+        component: Index
+      },
+      {
+        path: '/play-game',
+        name: 'Play',
+        component: Play
+      },
+      {
+        path: '/bounty',
         name: 'HelloWorld',
-        component: MIndex
+        component: MHello
       },
       {
         path: '/sign-in',
@@ -62,6 +74,16 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
     routes: [
       {
         path: '/',
+        name: 'Index',
+        component: Index
+      },
+      {
+        path: '/play-game',
+        name: 'Play',
+        component: Play
+      },
+      {
+        path: '/bounty',
         name: 'HelloWorld',
         component: HelloWorld
       },
@@ -109,4 +131,10 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
   })
 
 }
+router.afterEach(function (to) {
+  if (window.ga) {
+    window.ga('set', 'page', to.fullPath);
+    window.ga('send', 'pageview');
+  }
+})
 export default router
