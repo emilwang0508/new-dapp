@@ -9,6 +9,7 @@ import SignUp from '../pages/SignUp'
 import MSignUp from '../pages/mobile/SignUp'
 import Intro from '../pages/Intro'
 import Uc from '../pages/Uc'
+import MUc from '../pages/mobile/Uc'
 import ResetPwd from '../pages/ResetPwd'
 import Guide from '../pages/Guide'
 
@@ -47,7 +48,12 @@ if(bowser.mobile!==undefined&&bowser.mobile==true){
         path: '/guide',
         name: 'Guide',
         component: Guide
-      }
+      },
+      {
+        path: '/uc',
+        name: 'UserCenter',
+        component: MUc
+      },
     ]
   })
 

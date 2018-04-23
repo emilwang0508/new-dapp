@@ -122,5 +122,20 @@ const actions = {
         })
     })
   },
+  getToken({commit}, e){
+    return new Promise((resolve, reject)=>{
+      api.getToken(e).then(response => {
+        console.log(response)
+        console.log(e)
+        if(response.code==200){
+          commit(types.MINUS_OVERAGE, e.amount)
+        }
+        resolve(response); })
+        .catch(error =>
+        {
+          console.log(error)
+        })
+    })
+  }
 }
 export default actions

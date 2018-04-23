@@ -61,7 +61,7 @@
           invite_code: null,
           invite_link: '',
           isLogin: this.$store.state.logined,
-          i:false
+          i:false,
         }
       },
       computed: {
@@ -122,7 +122,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .container{
-        width: 90%;
+        width: 95%;
     }
     .invite{
         min-height: 100vh;

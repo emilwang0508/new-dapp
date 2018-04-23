@@ -143,19 +143,117 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+    .invite{
+        position: relative;
+        min-height: 1125px;
+        background-image: url(/static/img/invite-bg.png);
+        background-size: cover;
+        margin-top: -45px;
+        z-index: 2;
+        .qrcode,#qrcode{
+            width: 160px;
+            height: 160px;
+            float: left;
+            position: relative;
+            margin: 5vh auto;
+            img{
+                width: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+        .intro-des {
+            position: relative;
+            border-image-source: url(/static/img/banner-des.png);
+            border-image-slice: 0 fill;
+            border-image-width: 1px;
+            width: 770px;
+            padding: 97px;
+            margin-left: -60px;
+        p {
+            font-size: 18px;
+            padding-bottom: 5px;
+        }
+        }
+        .spaceship{
+            width: calc(95% - 100px);
+            max-width: 237px;
+            margin-top: calc(3vh);
+            float: right;
+        }
+        .user-center{
+            margin-top: 30px;
+        >div{
+            width: 80%;
+        }
+        .name{
+            font-family: 'special';
+            font-size: 25px;
+        }
+        .bonus{
+            font-size: 20px;
+        }
+        .invited{
+            font-size: 20px;
+        }
+        }
+        .des{
+            text-align: center;
+        img{
+            object-fit: cover;
+            width: 100%;
+            max-width: 600px;
+        }
+        }
+        .img100{
+            width: 100%;
+            object-fit: cover;
+        }
+        .code-panel{
+            margin: 5vh auto;
+            width: 450px;
+        >p{
+            font-family: 'special';
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        >div{
+
+            position: relative;
+            height: 50px;
+            width: 100%;
+            border: 1px solid transparent;
+            border-image-source: url(/static/img/code-panel-border.png);
+            border-image-slice: 0 fill;
+            border-image-width: 0px;
+            line-height: 50px;
+            text-indent: 8%;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        p{
+            width: 80%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height: 50px;
+        }
+        .copy{
+            position: absolute;
+            right: 8%;
+            top: 0;
+        }
+        }
+        }
+        .tips{
+            font-family: "Microsoft YaHei UI";
+            font-size: 10px;
+            color: #949494;
+            bottom: 60px;
+            position: absolute;
+        }
+    }
 </style>

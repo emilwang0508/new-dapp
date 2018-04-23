@@ -66,6 +66,9 @@ service.interceptors.response.use(
         case 103:
           Toast('over limit!!!')
           break;
+        case 104:
+          Toast('token over limit!!!')
+          break;
         case 404:
           Toast('unknow error!!!')
           break;

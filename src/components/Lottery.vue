@@ -22,15 +22,15 @@
             return {
                 msg: 'lottery',
                 items: [
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
-                  {content:`<img src="/static/img/default.png" alt="" class="border"><img src="/static/img/normal.png" alt="" class="capsule">`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
+                  {content:`<img src="/static/img/default.png" alt="" class="border" /><img src="/static/img/normal.png" alt="" class="capsule"/>`},
                 ],
 
             }
@@ -61,7 +61,9 @@
                           console.log(error)
                     })
                 }else {
-                  MessageBox.alert('',{message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',title: 'Tips',confirmButtonText: 'Invite',showCancelButton: true,cancelButtonText: 'Cancel',closeOnClickModal: true}).then(action=>{
+                  MessageBox.alert('',
+                    {message: 'You have used up your three supply drops today. Invite your friends for large amounts of DCVT rewards!',
+                      title: 'Tips',confirmButtonText: 'Invite',showCancelButton: true,cancelButtonText: 'Cancel',closeOnClickModal: true}).then(action=>{
                     if(action=='confirm')
                     _this.goInvite('#invite')
                   })
@@ -87,8 +89,56 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    header{
-        padding: 10px 0;
-        min-height: 20px;
+    .lottery{
+        max-width: 600px;
+        height: 600px;
+        margin: 4vh auto;
+     .title{
+            font-size: 2rem;
+        }
+
+
     }
+    .lottery-panel{
+        position: relative;
+        div{
+            text-align: center;
+            position: relative;
+            height: 20vh;
+            font-size: 1.0rem;
+            img{
+                position: absolute;
+            }
+            img:first-of-type{
+                position: absolute;
+                width: 100%;
+                position: absolute;
+                animation: rotating 10s infinite;
+                top: 0;
+                left: 0;
+            }
+            img.capsule{
+                margin: 10%;
+                position: absolute;
+                top: 18px;
+                left: 18px;
+            }
+        }
+
+        .border{
+
+        }
+        .capsule{
+            width: 80%;
+            margin: 10%;
+            position: absolute;
+            top: 18px;
+            left: 18px;
+        }
+        .des{
+            margin: 2rem 0;
+        }
+
+    }
+
 </style>

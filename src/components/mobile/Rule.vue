@@ -39,19 +39,54 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+    .rule{
+        height: 100vh;
+        background-image: url(/static/img/second.png);
+        background-size: cover;
+        position: relative;
+        margin-top: -2px;
+        min-height: 600px;
+        border: 1px solid transparent;
+    .star{
+        width: 17rem;
+        position: absolute;
+        top: -4.5rem;
+        left: -5%;
+    }
+    .title{
+        font-size: 3rem;
+        margin-top: 13vh;
+    }
+    .panel{
+        z-index: 2;
+        margin: 2vh auto;
+        position: relative;
+        max-width: 600px;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+    button{
+        border-image-source: url(/static/img/invite-btn.png);
+        border-image-slice: 0 0 fill;
+        border-image-width: 0px;
+        background-color: rgba(255, 255, 255, 0);
+        font-family: 'special';
+        color: #fff;
+        padding: 0.5rem 1.2rem;
+        font-size: 1.5rem;
+        position: absolute;
+        bottom: -5%;
+        left: 6.5%;
+    }
+    }
+    .ship{
+        width: 30rem;
+        position: absolute;
+        right: 0;
+        bottom: -75px;
+        z-index: 1;
+    }
+    }
 </style>

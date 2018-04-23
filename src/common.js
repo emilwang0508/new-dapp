@@ -15,7 +15,7 @@ export function FloatSub(arg1,arg2){
   m=Math.pow(10,Math.max(r1,r2));
   //动态控制精度长度
   n=(r1=r2)?r1:r2;
-  return (((arg1*m-arg2*m)/m).toFixed(n)).toFixed(4);
+  return ((arg1*m-arg2*m)/m).toFixed(n)
 }
 
 //浮点数乘法运算

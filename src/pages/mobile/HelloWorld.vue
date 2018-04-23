@@ -71,8 +71,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
     .container{
-        width: 90%;
+        width: 95%;
+    }
+    .index{
+    .banner{
+        background-image: url(/static/img/banner.png);
+        padding-top: 1px;
+        background-size: cover;
+        background-position: bottom;
+        min-height: 100vh;
+        margin-top: -10px;
+    }
     }
 </style>

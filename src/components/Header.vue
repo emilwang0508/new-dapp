@@ -5,7 +5,7 @@
         <div class="menu fr"  @click="switchStatus" v-bind:class="{ active: isActive }">
             <img src="/static/img/user-icon.png" alt="icon">
             <div class="menu-panel"  v-bind:class="{ active: isActive }">
-                <div >{{this.$store.state.userInfo.name}}</div>
+                <div @click="redirectTo('uc')">{{this.$store.state.userInfo.name}}</div>
                 <div @click="logout()">Log Out</div>
             </div>
 
@@ -55,5 +55,44 @@
     header{
         padding: 10px 0;
         min-height: 20px;
+    }
+    header.header{
+        z-index: 3;
+        position: relative;
+        .balance{
+            height: 3.7rem;
+            border-image-source: url(/static/img/balance.png);
+            border-image-slice: 0 0 fill;
+            border-image-width: 0px;
+            padding: 0px 20px;
+            line-height: 2.7rem;
+        }
+        .menu{
+            position: relative;
+            img{
+                height: 3.7rem;
+                right: 0;
+            }
+            .menu-panel{
+                display: none;
+                position: absolute;
+                right: 0;
+                text-align: right;
+                padding: 5px 10px;
+                width: 60px;
+                top: 3.7rem;
+                background-color: rgba(0,0,0,0.5);
+                border-radius: 5px;
+                >*{
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+            }
+            .menu-panel.active{
+                display: inline-block;
+            }
+        }
     }
 </style>

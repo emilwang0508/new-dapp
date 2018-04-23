@@ -4,23 +4,27 @@
         <div class="uc-panel">
             <div class="info-panel">
                 <div class="name">
-                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">User name</span><span>Nobody</span></p>
+                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">User name</span><span>{{this.$store.state.userInfo.name}}</span></p>
                 </div>
                 <div class="wallet">
                     <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">My  wallet</span><span>
-                        <a href="#" @click="handleModal">Please bind your wallet account.</a></span></p>
+                       <a href="#" v-if="this.$store.state.userInfo.address!=='0x0'">{{this.$store.state.userInfo.address}}</a> <a href="#" @click="handleModal('wallet')"  v-else >Please bind your wallet account.</a></span></p>
                 </div>
                 <div class="phone">
-                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">My  phone</span><span><a
-                            href="#">Please bind your phone number.</a></span></p>
+                    <p><span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span><span class="text-shadow special">My  phone</span>
+                        <span>
+                            <a href="#" v-if="this.$store.state.userInfo.phone!=='0'">{{this.$store.state.userInfo.phone}}</a>
+                            <a href="#" @click="handleModal('phone')" v-else>Please bind your phone number.</a>
+                        </span>
+                    </p>
                 </div>
                 <div class="token">
                     <p>
                         <span class="icon"><img src="/static/img/user-icon.png" alt="icon"></span>
                         <span class="text-shadow special">My  token</span>
-                        <span class="amount special">10.000 DCVT</span>
-                        <span class="transfer-button">Transfer to Wallet</span>
-                        <span class=""><a href="" target="_blank">How to transfer</a></span>
+                        <span class="amount special">{{this.$store.state.userInfo.deposit}} DCVT</span>
+                        <span class="transfer-button" @click="handleModal('token')">Transfer to Wallet</span>
+                        <span class=""><a href="/#/guide" target="_blank">How to transfer</a></span>
                     </p>
                 </div>
             </div>
@@ -37,23 +41,23 @@
             </div>-->
 
         </div>
-        <div class="modal" v-show="showModal">
-            <div class="close-panel"></div>
+        <div class="modal" v-show="showModal!==''">
+            <div class="close-panel" @click="closeModal"></div>
             <div class="form-group">
-<!--                <div class="form-panel">
+                <div class="form-panel"  v-if="showModal=='token'">
                     <p class="text-shadow special">Extraction of token</p>
                     <div class="h30"></div>
                     <div class="input-group token">
                         <label for="amount"><p class="text-shadow des">Please enter the amount of money you want to pick up the token </p></label>
-                        <input type="number" name="amount" step="20" min="20">
+                        <input type="number" name="amount" step="20" min="20" v-model="amount">
                     </div>
                     <div class="input-group">
                         <label for="password"><p class="text-shadow des">Password </p></label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" v-model="password">
                     </div>
-                    <button class="submit">Submit</button>
-                </div>-->
-<!--                <div class="form-panel wallet">
+                    <button class="submit" @click="getToken" :disabled="submitIsDisabled">Submit</button>
+                </div>
+                <div class="form-panel wallet" v-if="showModal=='wallet'">
                     <p class="text-shadow special">Bind your digital wallet</p>
                     <div class="h30"></div>
                     <div class="input-group">
@@ -65,9 +69,9 @@
                         <input type="password" name="password" v-model="password">
                     </div>
                     <button class="submit" @click="handleSubmit('wallet')" :disabled="submitIsDisabled">Submit</button>
-                </div>-->
-                <div class="form-panel phone">
-                    <p class="text-shadow special">Bind your cell phone number</p>
+                </div>
+                <div class="form-panel phone" v-if="showModal=='phone'">
+                    <p class="text-shadow special">Bind your mobile phone number</p>
                     <div class="h30"></div>
                     <div class="input-group" style="position: relative">
                         <label for="amount"><p class="text-shadow des">Please bind your cell phone number</p></label>
@@ -84,9 +88,14 @@
                         <input type="password" name="password" v-validate="'required|min:6|max:30'" v-model="password">
                         <p  v-show="errors.has('password')" class="error">{{ errors.first('password') }}</p>
                     </div>
+                    <div class="h50"></div>
                     <button class="submit" @click="handleSubmit('phone')" :disabled="submitIsDisabled">Submit</button>
                 </div>
             </div>
+        </div>
+        <div class="notice" v-show="noticeShow">
+            <div class="close-btn" @click="noticeShow=false"></div>
+            <p><img src="/static/img/metamask.png" alt="metamask">PLEASE UNLOCK YOUR METAMASK</p>
         </div>
     </div>
 </template>
@@ -94,7 +103,7 @@
 <script>
 import Verify from 'vue2-verify'
 import Header from '../components/Header'
-//import utils from 'intl-tel-input/build/js/utils'
+import {Toast, MessageBox } from 'mint-ui'
 import VuePhoneInput from '../components/IntlTelInput.vue'
 import {planet} from "../event";
 export default {
@@ -125,31 +134,23 @@ export default {
               {active:'false',text:"My Chests"},
             ],
             tagIndex: 0,
-            showModal: false
+            showModal: '',
+            transferDisabled: true,//账户禁止
+            noticeShow: false
         }
     },
     components: {
       VuePhoneInput, Header
     },
     mounted(){
-/*        $('#phone').intlTelInput({
-          initialCountry: 'auto',
-          utilsScript: utils,
-          geoIpLookup: function(callback) {
-            $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-              var countryCode = (resp && resp.country) ? resp.country : "";
-              callback(countryCode);
-            });
-          }
-        })
-        let countryData = $('#phone').intlTelInput('getSelectedCountryData')
-        let error = $('#phone').intlTelInput('getValidationError')
-        this.dialCode = countryData.dialCode
-        console.log($('#phone').intlTelInput )*/
     },
     methods:{
       initPhone(){
 
+      },
+      closeModal(){
+        this.$router.push('/uc')
+        this.showModal = ''
       },
       switchTag(e){
         this.tagIndex=e
@@ -226,7 +227,9 @@ export default {
               this.$store.dispatch('updatePhone',form ).then(res=>{
 
                 this.submitIsDisabled = true
-
+                Toast('Bind successfully!')
+                this.showModal = ''
+                this.$store.commit('UPDATE_USER_INFO',{key:'phone',value:form.phone})
               }).catch(error=>{
                 this.submitIsDisabled = false
               })
@@ -241,8 +244,9 @@ export default {
       updateAddress(){
         let _this = this
         if(this.address == null||this.address == ''||this.address == undefined){
-          _this.$toast('Unlock metamask wallet!')
+          _this.noticeShow = true
           this.submitIsDisabled = false
+
         }else {
           let form = {
             address: _this.address,
@@ -256,7 +260,9 @@ export default {
               this.$store.dispatch('updateAddress',form ).then(res=>{
 
                 this.submitIsDisabled = true
-
+                Toast('Bind successfully!')
+                this.showModal = ''
+                this.$store.commit('UPDATE_USER_INFO',{key:'address',value:form.address})
               }).catch(error=>{
                 this.submitIsDisabled = false
               })
@@ -269,10 +275,45 @@ export default {
         }
       },
       getToken(){
+        let _this = this
+        this.submitIsDisabled = true
+        let form = {
+          address: _this.address,
+          password: this.password,
+          session: locale.get('session'),
+          amount: this.amount,
+          action: 'dcvt'
+        }
+        this.$validator.validateAll().then((result) => {
+          if(result){
+            this.$store.dispatch('getToken',form ).then(res=>{
 
+              _this.showModal = ''
+              Toast('Extract token transaction in progress, please wait for a moment!')
+              this.submitIsDisabled = false
+            }).catch(error=>{
+              this.submitIsDisabled = false
+
+            })
+          }else {
+            this.submitIsDisabled = false
+
+          }
+
+
+        })
       },
-      handleModal(){
-        this.showModal = true
+      handleModal(e){
+        if(e=='token'){
+          if(this.transferDisabled == true){
+            MessageBox.alert('',{message: 'Transfer DCV token to wallet, first bind the mobile number and digital wallet',title: 'Tips',confirmButtonText: 'OK',closeOnClickModal: true})
+          }else {
+            this.showModal = e
+          }
+        }else {
+          this.showModal = e
+        }
+
       }
 
 
@@ -300,7 +341,48 @@ export default {
 
 
       },
-    }
+      address(val){
+        console.log(val)
+
+      }
+    },
+    created(){
+      let session = locale.get('session')
+      let _this = this
+      let _address = web3.currentProvider.publicConfigStore._state.selectedAddress
+      if(_address==undefined){
+        this.noticeShow = true
+      }
+      if (session!==undefined) {
+        axios.get(process.env.BASE_API+'/api/_csrf_token_').then((res)=>{
+          if (res.status===200&&res.data.code==200){
+            let csrf_token = res.data.msg
+            window.axios.defaults.headers.common['csrf-token'] = csrf_token;
+            window.axios.defaults.headers.common['_csrf'] = csrf_token;
+            window.axios.defaults.headers.common['xsrf-token'] = csrf_token;
+            window.axios.defaults.headers.common['x-csrf-token'] = csrf_token;
+            window.axios.defaults.headers.common['x-xsrf-token'] = csrf_token;
+            window.axios.defaults.headers.common['credentials'] = 'same-origin';
+
+            _this.$store.dispatch('inviteStatistics', session)
+            _this.$store.dispatch('getUserInfo', session)
+            _this.$store.commit('SET_SESSION',session)
+            if(_this.$store.state.userInfo.phone===0||_this.$store.state.userInfo.addresss=='0x0'){
+              _this.transferDisabled = true
+            }else {
+              _this.transferDisabled = false
+            }
+
+
+          }
+
+        }).catch((error)=>{
+
+        })
+      }else{
+        _this.$router.push('/')
+      }
+    },
 }
 </script>
 
@@ -426,21 +508,24 @@ export default {
         left: 0;
         background-color: #000;
         z-index: 999;
+        .close-panel{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     }
     .form-group{
         width: 600px;
         margin: 100px auto;
-        .close-panel{
 
-        }
     }
     .form-panel{
         border-image-source: url(/static/img/form-panel-border.png);
         border-image-slice: 0 0 fill;
         border-image-width: 0;
         width: 460px;
-        height: 285px;
-        margin: 70px 30px;
+        min-height: 285px;
+        margin: 200px 30px;
         padding: 55px;
         .des{
             font-size: 20px;
@@ -468,6 +553,31 @@ export default {
             background-color: #eeeeee;
             color: #000000;
             cursor: not-allowed;
+        }
+    }
+    .notice{
+        border-image-source: url(/static/img/notice-bg.png);
+        border-image-slice: 0 0 fill;
+        border-image-width: 0;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        margin-left: -300px;
+        width: 600px;
+        padding: 20px;
+        z-index: 999;
+        p{
+            font-family: special;
+            font-size: 20px;
+        }
+        .close-btn{
+            position: absolute;
+            right: 20px;
+            z-index: 4;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            background: url(/static/img/closed-btn.png) no-repeat center;
         }
     }
 </style>

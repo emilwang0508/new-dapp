@@ -127,7 +127,7 @@ p.text-shadow{
 .container{
   //width: 90%;
   margin: 0 auto;
-  //max-width: 1200px;
+  position: relative;
 }
 #app{
   //background-image: url("/static/img/background.png");
@@ -347,86 +347,64 @@ button
 .text-right{
   text-align: right;
 }
-.lottery{
-  max-width: 600px;
-  margin: 4vh auto;
-  .title{
-    font-size: 2rem;
-  }
-  .lottery-panel{
-    >div{
-      text-align: center;
-      position: relative;
-      height: 20vh;
-      font-size: 1.0rem;
-      img.border{
-        width: 100%;
-        position: absolute;
-        animation: rotating 10s infinite;
-      }
-      img.capsule{
-        width: 80%;
-        margin: 10%;
-      }
-      img.opened{
-        width: 100%;
-      }
-    }
-  }
 
 
-  .des{
-    margin: 2rem 0;
-  }
-}
+
+
+
 p.special,span.special{
   font-family: 'special';
   margin: 1vh auto;
 }
-.index{
-  .banner{
-    position: relative;
-    background-image: url(/static/img/background-full.png);
-    padding-top: 1px;
-    background-size: cover;
-    background-position: bottom;
-    min-height: 100vh;
-    margin-top: -10px;
-    z-index: 2;
-    .intro-des{
-      border-image-source: url(/static/img/banner-des.png);
-      border-image-slice: 0 fill;
-      border-image-width: 1px;
-      width: 635px;
-      height: 185px;
-      padding: 68px;
-      p{
-        font-size: 18px;
-        padding-bottom: 5px;
-      }
-    }
-    .link{
-      position: absolute;
-      text-align: center;
-      display: inline-block;
-      height: 35px;
-      width: 80vw;
-      max-width: 280px;
-      line-height: 22px;
-      border-image-source: url(/static/img/video-btn-border.png);
-      border-image-slice: 0 0 fill;
-      border-image-width: 0px;
-      margin: 10px 0;
 
+
+.lottery-panel{
+  position: relative;
+  div{
+    text-align: center;
+    position: relative;
+    height: 20vh;
+    font-size: 1.0rem;
+    img{
+      position: absolute;
     }
-    .video-link{
-      left: 10%;
+    img.border{
+      position: absolute;
+      width: 160px;
+      animation: rotating 10s infinite;
+      top: 0;
+      left: 0;
     }
-    .coming-link{
-      right: 10%;
+    img.capsule{
+      margin: 10%;
+      width: 100px;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+    img.opened{
+      position: absolute;
+      width: 160px;
+      bottom: 0;
+      left: 0;
     }
   }
+
+  .border{
+
+  }
+  .bonus{
+    margin: 10%;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+  }
+  .des{
+    margin: 2rem 0;
+  }
+
 }
+
 .button-more{
   display: block;
   margin: 1.5vh auto;
@@ -439,221 +417,25 @@ p.special,span.special{
 
 
 
-.invite{
+.qrcode,#qrcode{
+  width: 160px;
+  height: 160px;
+  float: left;
   position: relative;
-  min-height: 1125px;
-  background-image: url(/static/img/invite-bg.png);
-  background-size: cover;
-  margin-top: -45px;
-  z-index: 2;
-  .qrcode,#qrcode{
-    width: 160px;
-    height: 160px;
-    float: left;
-    position: relative;
-    margin: 5vh auto;
-    img{
-      width: 100%;
-      object-fit: cover;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-  .intro-des {
-    position: relative;
-    border-image-source: url(/static/img/banner-des.png);
-    border-image-slice: 0 fill;
-    border-image-width: 1px;
-    width: 770px;
-    padding: 97px;
-    margin-left: -60px;
-    p {
-      font-size: 18px;
-      padding-bottom: 5px;
-    }
-  }
-  .spaceship{
-    width: calc(95% - 100px);
-    max-width: 237px;
-    margin-top: calc(3vh);
-    float: right;
-  }
-  .user-center{
-    margin-top: 30px;
-    >div{
-      width: 80%;
-    }
-    .name{
-      font-family: 'special';
-      font-size: 25px;
-    }
-    .bonus{
-      font-size: 20px;
-    }
-    .invited{
-      font-size: 20px;
-    }
-  }
-  .des{
-    text-align: center;
-    img{
-      object-fit: cover;
-      width: 100%;
-      max-width: 600px;
-    }
-  }
-  .img100{
+  margin: 5vh auto;
+  img{
     width: 100%;
     object-fit: cover;
-  }
-  .code-panel{
-    margin: 5vh auto;
-    width: 450px;
-    >p{
-      font-family: 'special';
-      margin-bottom: 5px;
-      font-size: 1.5rem;
-    }
-
-    >div{
-
-      position: relative;
-      height: 50px;
-      width: 100%;
-      border: 1px solid transparent;
-      border-image-source: url(/static/img/code-panel-border.png);
-      border-image-slice: 0 fill;
-      border-image-width: 0px;
-      line-height: 50px;
-      text-indent: 8%;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      p{
-        width: 80%;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        height: 50px;
-      }
-      .copy{
-        position: absolute;
-        right: 8%;
-        top: 0;
-      }
-    }
-  }
-  .tips{
-    font-family: "Microsoft YaHei UI";
-    font-size: 10px;
-    color: #949494;
-    bottom: 60px;
-    position: absolute;
-  }
-}
-
-.rule{
-  height: 1085px;
-  background-image: url(/static/img/rule-bg.png);
-  background-size: cover;
-  position: relative;
-  margin-top: -45px;
-  min-height: 600px;
-  border: 1px solid transparent;
-  z-index: 1;
-
-  .intro-des {
-    position: relative;
-    border-image-source: url(/static/img/banner-des.png);
-    border-image-slice: 0 fill;
-    border-image-width: 1px;
-    width: 770px;
-    padding: 97px;
-    margin: 0 auto;
-    p {
-      font-size: 18px;
-      padding-bottom: 5px;
-    }
-  }
-  .star{
-    //width: 17rem;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
   }
-  .title{
-    font-size: 3rem;
-    margin-top: 300px;
-  }
-  .panel{
-    z-index: 2;
-    margin: 2vh auto;
-    position: relative;
-    max-width: 600px;
-    img{
-      width: 100%;
-      object-fit: cover;
-    }
-
-  }
-  button.invite-btn{
-    border-image-source: url(/static/img/invite-btn.png);
-    border-image-slice: 0 0 fill;
-    border-image-width: 0px;
-    background-color: rgba(255, 255, 255, 0);
-    font-family: 'special';
-    color: #fff;
-    padding: 0.5rem 1.2rem;
-    font-size: 30px;
-    position: absolute;
-    left: 65px;
-    bottom: -7px;
-  }
-  .ship{
-    //width: 30rem;
-    position: absolute;
-    right: 0;
-    bottom: -75px;
-    z-index: 1;
-  }
 }
 
-header.header{
-  .balance{
-    height: 3.7rem;
-    border-image-source: url(/static/img/balance.png);
-    border-image-slice: 0 0 fill;
-    border-image-width: 0px;
-    padding: 0px 20px;
-    line-height: 2.7rem;
-  }
-  .menu{
-    position: relative;
-    img{
-      height: 3.7rem;
-      right: 0;
-    }
-    .menu-panel{
-      display: none;
-      position: absolute;
-      right: 0;
-      text-align: right;
-      padding: 5px 10px;
-      width: 60px;
-      top: 3.7rem;
-      background-color: rgba(0,0,0,0.5);
-      border-radius: 5px;
-      >*{
-        height: 30px;
-        line-height: 30px;
-        font-size: 1.5rem;
-      }
-    }
-    .menu-panel.active{
-      display: inline-block;
-    }
-  }
-}
+
+
+
 .intro{
   background-image: url("/static/img/background.png");
   min-height: calc(100vh);

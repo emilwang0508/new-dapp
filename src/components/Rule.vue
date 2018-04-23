@@ -52,19 +52,70 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+    .rule{
+        height: 1085px;
+        background-image: url(/static/img/rule-bg.png);
+        background-size: cover;
+        position: relative;
+        margin-top: -45px;
+        min-height: 600px;
+        border: 1px solid transparent;
+        z-index: 1;
+
+        .intro-des {
+            position: relative;
+            border-image-source: url(/static/img/banner-des.png);
+            border-image-slice: 0 fill;
+            border-image-width: 1px;
+            width: 770px;
+            padding: 97px;
+            margin: 0 auto;
+            p {
+                font-size: 18px;
+                padding-bottom: 5px;
+            }
+        }
+        .star{
+            //width: 17rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .title{
+            font-size: 3rem;
+            margin-top: 300px;
+        }
+        .panel{
+            z-index: 2;
+            margin: 2vh auto;
+            position: relative;
+            max-width: 600px;
+            img{
+                width: 100%;
+                object-fit: cover;
+            }
+
+        }
+        button.invite-btn{
+            border-image-source: url(/static/img/invite-btn.png);
+            border-image-slice: 0 0 fill;
+            border-image-width: 0px;
+            background-color: rgba(255, 255, 255, 0);
+            font-family: 'special';
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            font-size: 30px;
+            position: absolute;
+            left: 65px;
+            bottom: -7px;
+        }
+        .ship{
+            //width: 30rem;
+            position: absolute;
+            right: 0;
+            bottom: -75px;
+            z-index: 1;
+        }
+    }
 </style>

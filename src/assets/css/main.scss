@@ -126,6 +126,7 @@ p.text-shadow{
 }
 .container{
     margin: 0 auto;
+    position: relative;
 }
 #app{
   //background-image: url("/static/img/background.png");
@@ -380,39 +381,30 @@ p.special{
  font-family: 'special';
   margin: 1vh auto;
 }
-.index{
-  .banner{
-    background-image: url(/static/img/banner.png);
-    padding-top: 1px;
-    background-size: cover;
-    background-position: bottom;
-    min-height: 100vh;
-    margin-top: -10px;
-  }
-}
+
 .button-more{
   display: block;
   margin: 1.5vh auto;
   width: 83px;
 }
-
-.invite{
+.qrcode,#qrcode{
+  width: 100px;
+  float: left;
+  position: relative;
+  img{
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+/*.invite{
   min-height: 100vh;
   background-image: url(/static/img/invite-bg.jpg);
   background-size: cover;
-  .qrcode,#qrcode{
-    width: 100px;
-    float: left;
-    position: relative;
-    img{
-      width: 100%;
-      object-fit: cover;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
+
   .spaceship{
     width: calc(95% - 100px);
     max-width: 237px;
@@ -490,94 +482,11 @@ p.special{
     font-size: 0.9rem;
     color: #949494;
   }
-}
+}*/
 
-.rule{
-  height: 100vh;
-  background-image: url(/static/img/second.png);
-  background-size: cover;
-  position: relative;
-  margin-top: -2px;
-  min-height: 600px;
-  border: 1px solid transparent;
-  .star{
-    width: 17rem;
-    position: absolute;
-    top: -4.5rem;
-    left: -5%;
-  }
-  .title{
-    font-size: 3rem;
-    margin-top: 13vh;
-  }
-  .panel{
-    z-index: 2;
-    margin: 2vh auto;
-    position: relative;
-    max-width: 600px;
-    img{
-      width: 100%;
-      object-fit: cover;
-    }
-    button{
-      border-image-source: url(/static/img/invite-btn.png);
-      border-image-slice: 0 0 fill;
-      border-image-width: 0px;
-      background-color: rgba(255, 255, 255, 0);
-      font-family: 'special';
-      color: #fff;
-      padding: 0.5rem 1.2rem;
-      font-size: 1.5rem;
-      position: absolute;
-      bottom: -5%;
-      left: 6.5%;
-    }
-  }
-  .ship{
-    width: 30rem;
-    position: absolute;
-    right: 0;
-    bottom: -75px;
-    z-index: 1;
-  }
-}
 
-header.header{
-  .balance{
-    height: 3.7rem;
-    border-image-source: url(/static/img/balance.png);
-    border-image-slice: 0 0 fill;
-    border-image-width: 0px;
-    padding: 0px 20px;
-    line-height: 2.7rem;
-  }
-  .menu{
-    position: relative;
-    img{
-      height: 3.7rem;
-      right: 0;
-    }
-    .menu-panel{
-      display: none;
-      position: absolute;
-      right: 0;
-      text-align: right;
-      padding: 5px 10px;
-      width: 60px;
-      top: 3.7rem;
-      background-color: rgba(0,0,0,0.5);
-      border-radius: 5px;
-      >*{
-        height: 30px;
-        line-height: 30px;
-        font-size: 1.5rem;
-      }
-    }
-    .menu-panel.active{
-      display: inline-block;
-    }
-  }
-}
+
+
 .intro{
   background-image: url("/static/img/background.png");
   min-height: calc(100vh);

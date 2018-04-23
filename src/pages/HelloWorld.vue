@@ -97,19 +97,50 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+
+    .index{
+    .banner{
+        position: relative;
+        background-image: url(/static/img/background-full.png);
+        padding-top: 1px;
+        background-size: cover;
+        background-position: bottom;
+        min-height: 100vh;
+        margin-top: -10px;
+        z-index: 2;
+    .intro-des{
+        border-image-source: url(/static/img/banner-des.png);
+        border-image-slice: 0 fill;
+        border-image-width: 1px;
+        width: 635px;
+        height: 185px;
+        padding: 68px;
+    p{
+        font-size: 18px;
+        padding-bottom: 5px;
+    }
+    }
+    .link{
+        position: absolute;
+        text-align: center;
+        display: inline-block;
+        height: 35px;
+        width: 80vw;
+        max-width: 280px;
+        line-height: 22px;
+        border-image-source: url(/static/img/video-btn-border.png);
+        border-image-slice: 0 0 fill;
+        border-image-width: 0px;
+        margin: 10px 0;
+
+    }
+    .video-link{
+        left: 10%;
+    }
+    .coming-link{
+        right: 10%;
+    }
+    }
+    }
 </style>

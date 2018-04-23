@@ -21,6 +21,7 @@
     "intl-tel-input": "^12.1.13",
     "jquery": "^3.3.1",
     "js-cookies": "^1.0.4",
+    "mathjs": "^4.1.2",
     "mint-ui": "^2.2.13",
     "nprogress": "^0.2.0",
     "qrcodejs2": "0.0.2",

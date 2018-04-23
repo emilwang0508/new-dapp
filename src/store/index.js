@@ -12,10 +12,11 @@ const state = {
     name: '',
     email:'',
     deposit: 0,
+    money:0,
     id: null,
     invite_code:'',
     playtimes: 0,
-    addresss: '',
+    address: '',
   },
   remainingLotteryTimes: 3,
   lottery:{

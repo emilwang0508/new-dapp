@@ -23,11 +23,13 @@ import {
 import Mint from 'mint-ui';
 import bowser from 'bowser'
 import planet from './event'
+import math from 'mathjs'
 
 Vue.use(Mint);
 Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(TelInput)
+Vue.use(math)
 // Vue.use(BootstrapVue);
 const isAccount = {
   getMessage(field, args) {
@@ -59,7 +61,7 @@ Vue.prototype.$planet = planet
 window.locale = require('store')
 window.web3 = web3
 window.planet = planet
-console.log(planet)
+window.math = math
 new Vue({
   el: '#app',
   router,

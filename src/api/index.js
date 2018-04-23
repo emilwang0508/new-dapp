@@ -79,6 +79,8 @@ export function updateAddress(form){
   })
 }
 
+
+
 export function resetPassword(form){
   return request({
     url: '/api/common/reset_password',
@@ -87,6 +89,19 @@ export function resetPassword(form){
       source: form.source,
       password: form.password,
       verify_code: form.verify_code,
+    }
+  })
+}
+
+export function getToken(form){
+  return request({
+    url: '/api/common/withdraw_token',
+    method: 'post',
+    data: {
+      action: form.action,
+      amount: form.amount,
+      password: form.password,
+      session: form.session,
     }
   })
 }
