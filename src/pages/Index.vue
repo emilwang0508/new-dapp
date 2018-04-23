@@ -58,7 +58,7 @@
                     <div class="row">
                         <p class="content col-lg-10">To encourage players to participate, 1 million DCV Tokens will be offered as bonus incentives. To get in on these perks, players who invite their friends will receive a reward, and when your friends receive their own rewards for doing the same thing, you will receive 25% of their bonus.</p>
                         <div class="col-lg-2">
-                            <a id="triangle-right" target="_blank" href="/#/bounty?utm_source=website&utm_content=button2">
+                            <a id="triangle-right" target="_blank" href="/#/bounty?utm_source=website&utm_content=button3">
 
                             </a>
                         </div>

@@ -54,7 +54,7 @@
                   }
                   this.$store.dispatch('lottery',data)
                     .then((res)=>{
-                      _this.items[e].content = `<p class="bonus">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened">`
+                      _this.items[e].content = `<p class="bonus" style="margin: 0 10%;position: absolute;top: 10px;left: 10px;">`+res.msg.bonus+` DCVT</p><img src="/static/img/opened.png" class="opened" style="position: absolute;width: 160px;bottom: 0;left: 0;">`
                     })
                     .catch((error)=>{
                         if(error)
