@@ -8,8 +8,8 @@
                     <p class="content">Decentraverse aims to be the world’s first major MMO blockchain game. Set in outer space, players can purchase warships, collect a variety of armaments, and attack and occupy any planet in the universe, the latter for which you will be handsomely rewarded. However, other players will compete with you for the planets’ resources, and you will need to develop your own strategies to win the war of aggression.</p>
                 </div>
                 <div class="buttons">
-                    <a href="/#/bounty"><img src="/static/img/activity-ico.png">BOUNTY PROGRAM</a>
-                    <a  href="/#/play-game" style="border: 1px solid white;background: transparent;"><img src="/static/img/game-ico.png">PLAY NOW</a>
+                    <a href="/#/bounty??utm_source=website&utm_content=button1"><img src="/static/img/activity-ico.png">BOUNTY PROGRAM</a>
+                    <a  href="/#/play-game?utm_source=website&utm_content=button2" style="border: 1px solid white;background: transparent;"><img src="/static/img/game-ico.png">PLAY NOW</a>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
                     <div class="row">
                         <p class="content col-lg-10">To encourage players to participate, 1 million DCV Tokens will be offered as bonus incentives. To get in on these perks, players who invite their friends will receive a reward, and when your friends receive their own rewards for doing the same thing, you will receive 25% of their bonus.</p>
                         <div class="col-lg-2">
-                            <a id="triangle-right" target="_blank" href="/#/bounty">
+                            <a id="triangle-right" target="_blank" href="/#/bounty?utm_source=website&utm_content=button2">
 
                             </a>
                         </div>
@@ -156,7 +156,7 @@
                         <div class="socials ">
                             <a href="//shang.qq.com/wpa/qunwpa?idkey=5df6f3597fc4ed68ac5f97b5f0cda0db8ce0e2528ffdb158f67f82076cde969b " target='_blank'><img src="/static/img/qq.png " alt="qq " /></a>
                             <a href="https://t.me/Decentraverse " target= '_blank'><img src="/static/img/telegram.png " alt="qq " /></a>
-                            <a href="https://medium.com/@f.ferreira " target= '_blank'><img src="/static/img/medium.png " alt="medium " /></a>
+                            <a href="https://medium.com/@decentraverse " target= '_blank'><img src="/static/img/medium.png " alt="medium " /></a>
                             <a href="https://Fb.com/decentraverse " target= '_blank'><img src="/static/img/facebook.png " alt="facebook " /></a>
                             <a href="https://discord.gg/McpaHrq " target='_blank'> <img src="/static/img/discord.png " alt="discord " /></a>
                         </div>
@@ -291,8 +291,10 @@
     }
 
     .about-DCV .item {
-        padding: auto 5%;
         height: 690px!important;
+        background: rgb(127, 142, 216);
+        padding: 20px 40px;
+        width: calc(25% - 80px);
     }
 
     .tokens .token-des {
